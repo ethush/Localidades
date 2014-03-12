@@ -1,0 +1,78 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/background_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dip"
+    android:paddingLeft="8dip"
+    android:paddingRight="8dip"
+    android:paddingTop="8dip"
+    android:stretchColumns="*"
+    tools:context=".PoliticalMenuActivity" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50" 
+            android:paddingBottom="4dip"
+            >
+             <Button
+		        android:id ="@+id/estatal"
+		        style="@style/mybutton"
+		        android:layout_width="0dip"
+		        android:layout_weight=".50"
+		        android:layout_height="fill_parent"
+		        android:text="@string/state"    
+		        android:layout_marginRight="4dip"
+		        android:layout_marginTop="190dip"
+		        android:onClick="PDFViewer_State">
+		        <!-- android:drawableTop="@drawable/ic_oaxaca" -->
+		        
+		        </Button>
+             
+             <Button
+		        android:id ="@+id/region"
+		        style="@style/btnStyleBreakerBay"
+		        android:layout_width="0dip"
+		        android:layout_weight=".50"
+		        android:layout_height="fill_parent"
+		        android:text="@string/region"
+		        android:layout_marginLeft="4dip"
+		        android:onClick="RegionActivity">
+		        <!-- android:drawableTop="@drawable/ic_valles_centrales" -->
+		        </Button>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_weight="0.50"
+            android:paddingTop="4dip"
+            >
+             <Button
+		        android:id ="@+id/political"
+		        style="@style/btnStyleBreakerBay"
+		        android:layout_width="0dip"
+		        android:layout_weight=".50"
+		        android:layout_height="fill_parent"
+		        android:text="@string/political"
+		        android:layout_marginRight="4dip"
+		        android:onClick="PoliticActivity"
+		        ></Button>
+			<Button
+			    android:id ="@+id/locality"
+			    style="@style/btnStyleBreakerBay"
+			    android:layout_width="0dip"
+			    android:layout_weight=".50"
+		    	android:layout_height="fill_parent"
+			    android:text="@string/locality"
+			    android:layout_marginLeft="4dip"
+			    android:onClick="MunicipiosActivity" >
+			    <!-- android:drawableTop="@drawable/ic_action" -->
+			    </Button>
+         </TableRow>
+</TableLayout>
+

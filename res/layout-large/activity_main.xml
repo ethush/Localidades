@@ -1,0 +1,42 @@
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     style="@style/background_menu"     
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".MainActivity" 
+     android:orientation="vertical" >
+	    
+	     <TextView
+	             android:id="@+id/localidad"
+	             style="@style/background_datos"
+	             android:layout_width="fill_parent"
+	             android:layout_height="wrap_content"
+	             android:gravity="top"
+	             android:text="@string/locality_name" />
+	    <fragment
+	    	android:id="@+id/mapa"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="0dp"
+	    	android:layout_weight="0.25"    	
+	    	class="com.google.android.gms.maps.MapFragment"
+	    	android:apiKey="AIzaSyBXkm_hbJhRQ80m-3WVwTzJw3nNtO4aE4g" />
+	     <!-- Divisor de mapa y contenido -->
+	     <LinearLayout
+		        android:orientation="vertical"
+		        android:layout_width="fill_parent"
+		        android:layout_height="5dp"
+		        android:background="@android:color/transparent"
+		        />
+
+	      <Button
+	             android:id="@+id/showMenu"
+	             style="@style/btnStyleArsenic"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_gravity="center"
+	             android:onClick="showMenu"
+	              />
+	     
+	     <!-- Contenido -->
+	    
+</LinearLayout>
