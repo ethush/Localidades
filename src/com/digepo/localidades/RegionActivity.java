@@ -21,7 +21,11 @@ public class RegionActivity extends Activity {
 		//getMenuInflater().inflate(R.menu.region, menu);
 		return false;
 	}
-
+	/*
+	 * Actividad usada para mostrar la información correspondiente a las regiones del estado
+	 * se usa la clase estatica DataHandler para proporcionar la url de la cual se obtendrá 
+	 * la información que mostrara la actividad PDFViewer_Activity
+	 * */
 	public void showRegion1(View v){
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.region1);

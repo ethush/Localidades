@@ -172,7 +172,7 @@ public class MainActivity extends Activity{
 	private class myLocListener implements LocationListener{
 		@Override
 		public void onLocationChanged(Location location) {
-			
+			//variales a usar para la obtencion de datos de geolocalizaciÛn.
 			latitude = location.getLatitude();
 			longitude = location.getLongitude();
 			
@@ -194,16 +194,16 @@ public class MainActivity extends Activity{
 						.zoom(14)
 						.bearing(90)
 						.build();
-						
+						//efecto de zoom si la version de android la soporta.
 						mapa.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 					}
 				}
-				
+				//Obtencion de datos de googleapis/maps
 				try {
 					getLocalidad();
 					if (latitude == null && longitude == null){
 						Toast.makeText(getApplicationContext(), R.string.no_position, Toast.LENGTH_LONG).show();
-						
+						//si existe un error en la obtencion de datos deshabilitamos el boton de informacion
 						btnmenu.setVisibility(View.GONE);
 					}
 					
@@ -212,9 +212,10 @@ public class MainActivity extends Activity{
 				}
 			}
 			catch(Exception ex){
+				ex.printStackTrace();
 				Log.e("Error render" , ex.toString());
 			}
-			
+			//deshabilitamos la actualizaciÛn de posiciÛn para evitar mayor consumo de datos al encontrar 
 			locacionMngr.removeUpdates(this);
 			
 		}
@@ -282,6 +283,7 @@ public class MainActivity extends Activity{
 			getDetalles();
 		}
 		catch(JSONException ex){
+			ex.printStackTrace();
 			Log.d("JSON Exception Address", ex.toString());
 		}
 		
@@ -322,7 +324,8 @@ public class MainActivity extends Activity{
 			try { //Procesamos la peticion con la funcion externa getInfo()
 				data = getHTTPJSON(req);
 				
-			} catch (IOException e) {		
+			} catch (IOException e) {
+				e.printStackTrace();
 				Log.d("Error de peticion", e.toString());
 			}
 			//Retornamos los valores ya que la funcion exige un retorno para ser tratado.
@@ -360,6 +363,7 @@ public class MainActivity extends Activity{
 			data = sb.toString();
 		}
 		catch(Exception ex){
+			ex.printStackTrace();
 			Log.d("Error getInfo", ex.toString());
 		}
 		finally{ //Cerramos y liberamos las conexiones y buffer de lectura.
@@ -434,6 +438,7 @@ public class MainActivity extends Activity{
 				
 		}
 		catch(JSONException ex){
+			ex.printStackTrace();
 			Log.d("JSON Exception Municipio", ex.toString());
 		}	
     }
@@ -442,33 +447,58 @@ private class getDetallesMunicipio extends AsyncTask<String, String, String>{
     			
 		@Override //Obtenemos los datos de geolocalizacion proporcionados por la api de google en formato JSON
 		protected String doInBackground(String... url) {
-			String xLocalidad = "", xVecindario = "";
+			String data = null;
+			String req = null;
+			String xLocalidad="",xVecindario="";
+						
 			MCrypt mcrypt_a = new MCrypt();
-			Log.e("dato1", DataHandler.localidad);
-			Log.e("dato2", DataHandler.vecindario);
+			
+			Log.e("dataHandler", DataHandler.localidad);
+			//Proceso de encriptaciÛn  de parametros a enviar por la URL
 			try {
-				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(DataHandler.localidad));
-				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(DataHandler.vecindario));
-			} catch (Exception e1) {
-				e1.printStackTrace();
+				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(DataHandler.vecindario)));
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.e("Vecindario", e.getMessage());
 			}
 			
-					
-			String req = DataHandler._HOST + "/" + DataHandler._ROOT + "/" + DataHandler._SCRIPT + "?";
-			req +="localidad="+xLocalidad+"&vecindario="+xVecindario;
-			Log.e("Datos Peticion",req);
+			try{
+				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(DataHandler.localidad)));
+			} catch(Exception e){
+				e.printStackTrace();
+				Log.e("Localidad", e.getMessage());
+			}
 			/*
 			 * Formamos la url y la procesamos en una peticion HTTPURLConnection*/
+			req = DataHandler._HOST + "/" + DataHandler._ROOT + "/" + DataHandler._SCRIPT + "?";
+			req +="localidad="+xLocalidad+"&vecindario="+xVecindario;
+			Log.e("Datos Peticion",req);
 			
-			String data = null;
 			try { //Procesamos la peticion
 				data = getHTTPJSON(req);
-				
-			} catch (IOException e) {		
+			} catch (IOException e) {
+				e.printStackTrace();
 				Log.d("Error de peticion", e.toString());
 			}
 			//Retornamos los valores ya que la funcion exige un retorno para ser tratado.
 			return data;
+		}
+		/*
+		 * FunciÛn para reemplazar caracteres con acentos, el modulo MCrypt no soporta caracteres con acentos
+		 * por seguridad de codificaciÛn.
+		 * */
+		private String sin_acentos(String input) {
+			String original = "·‡‰ÈËÎÌÏÔÛÚˆ˙˘uÒ¡¿ƒ…»ÀÕÃœ”“÷⁄Ÿ‹—Á«";
+		    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+		    String output = input;
+		    
+		    for (int i=0; i<original.length(); i++) {
+		        // Reemplazamos los caracteres especiales.
+		        output = output.replace(original.charAt(i), ascii.charAt(i));
+		    }
+		    
+		    //Log.e("Sin acentos", output);
+		    return output;
 		}
     }
 }

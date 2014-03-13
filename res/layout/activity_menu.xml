@@ -16,7 +16,7 @@
         
         <Button 
             android:id="@+id/graf1" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -25,7 +25,7 @@
             android:onClick="showGraf1"/>
        <Button 
             android:id="@+id/graf2" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -34,7 +34,7 @@
             android:onClick="showGraf2"/>
        <Button 
             android:id="@+id/graf3" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
            android:layout_height="0dp"
            android:layout_marginBottom="2dp"
@@ -43,7 +43,7 @@
             android:onClick="showGraf3"/>
        <Button 
             android:id="@+id/graf4" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
            android:layout_height="0dp"
            android:layout_marginBottom="2dp"
@@ -52,7 +52,7 @@
             android:onClick="showGraf4"/>
        <Button 
             android:id="@+id/graf5" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -61,7 +61,7 @@
             android:onClick="showGraf5"/>
        <Button 
             android:id="@+id/graf6" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -70,7 +70,7 @@
             android:onClick="showGraf6"/>
        <Button 
             android:id="@+id/graf7" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -79,7 +79,7 @@
             android:onClick="showGraf7"/>
        <Button 
             android:id="@+id/graf8" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -88,7 +88,7 @@
             android:onClick="showGraf8"/>
        <Button 
             android:id="@+id/graf9" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
@@ -97,7 +97,7 @@
             android:onClick="showGraf9"/>
        <Button 
             android:id="@+id/graf10" 
-            style="@style/mybutton"
+            style="@style/mybutton_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".1"

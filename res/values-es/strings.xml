@@ -45,6 +45,4 @@
 	<string name="no_location">Error al intentar obtener su ubicación.\n Intente dentro de una zona urbana.</string>
 	<string name="play_services_on">Google Services Disponible.</string>
 	<string name="error_google_services">Debe tener instalado Google Play Store y Google Play Services.</string>
-	<string name="loading">Cargando.</string>
-	<string name="loading_msg">Por favor espere.</string>
 </resources>

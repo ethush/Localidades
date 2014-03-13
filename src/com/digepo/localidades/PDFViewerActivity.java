@@ -10,7 +10,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class PDFViewerActivity extends Activity {
-
+	/*
+	 * Actividad que se ocupa de simular un navegador web simple.
+	 * */
 	ProgressDialog progress;
 	
 	@SuppressLint("SetJavaScriptEnabled")
@@ -21,14 +23,14 @@ public class PDFViewerActivity extends Activity {
 		setContentView(R.layout.activity_pdfviewer);
 		
 		String myurl = null;
-		
+		// Obtenemos la url que es manejada por la clase estatica DataHandler
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			myurl = extras.getString("url");
 		}
-		
+		//Iniciamos un popup de carga
 		progress = ProgressDialog.show(this, "Cargando...", "Por favor, espere.");
-		
+		//Instanciamos el visor web y se habilita javascript, es requerido por el visor de google docs
 		WebView web = (WebView) findViewById(R.id.webView);
 		web.getSettings().setJavaScriptEnabled(true); 
 		web.getSettings().setUseWideViewPort(true);
@@ -41,12 +43,12 @@ public class PDFViewerActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, final String url) {
             	 if(progress.isShowing()){
-                 	progress.dismiss();
+                 	progress.dismiss(); //si ha terminado la carga, deshabilitamos el popup de información
                  }
             }
             
 		});
-		
+		//y cargamos la url
 		web.loadUrl(myurl);
 	}
 

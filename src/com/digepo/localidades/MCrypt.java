@@ -6,7 +6,18 @@ import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
+/*
+ * Clase usada para encriptar los valores devueltos por googleapis y para el proceso inverso 
+ * al momento de obtener los datos solicitados remotamente.
+ * 
+ * Encriptar datos:
+ * MCrypt mcrypt = new MCrypt();
+ * String encrypt = MCrypt.bytesToHex(mcrypta.encrypt(<valor string>));
+ * 
+ * Desencriptar:
+ * MCrypt mcrypt = new MCrypt();
+ * String decrypt =  new String(mcrypt.decrypt(<encrypt>);
+ * */
 public class MCrypt {
 
         //private String iv = "fedcba9876543210";

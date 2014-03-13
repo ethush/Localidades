@@ -29,7 +29,11 @@ public class MenuActivity extends Activity {
 		
 		overridePendingTransition(0, R.anim.efecto_salida_1);
 	}
-	
+	/*
+	 * Actividad usada para mostrar la información correspondiente al municipio que se obtuvo mediante GPS
+	 * se usa la clase estatica DataHandler para proporcionar la url de la cual se obtendrá 
+	 * la información que mostrara la actividad PDFViewer_Activity
+	 * */
 	public void showGraf1 (View v){
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc1);

@@ -31,7 +31,10 @@ public class PoliticalMenuActivity extends Activity {
 		super.onBackPressed();
 		overridePendingTransition(0, R.anim.efecto_salida_1);
 	}
-	
+	/*
+	 * Actividad para mostrar la información o menus correspondientes al municipio, region o estado
+	 * 
+	 * */
 	public void PDFViewer_State(View v){
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.url_state);
