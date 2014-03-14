@@ -43,7 +43,7 @@
 	<string name="no_data_connection">Not found data connection </string>
 	<string name="exit_message">Press again to exit.</string>
 	<string name="no_position">Fail to acquire GPS location.\nCheck with your provider data.</string>
-	<string name="no_location">Fail to intent location.\n Try again inside urban zone.</string>
+	<string name="no_location">Fail to intent location.\n Try again into a recognized urban zone.</string>
 	<string name="play_services_on">Google Services Disponible.</string>
 	<string name="error_google_services">You must have installed Google Play Store and Services.</string>
 </resources>

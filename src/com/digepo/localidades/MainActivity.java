@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -49,12 +50,14 @@ public class MainActivity extends Activity{
     Double latitude, longitude;
     //Variables para obtencion de informacion de la localidad 
     String localidad = "", vecindario = "";
-    
+    ProgressDialog pDialog;
     Button btnmenu;
+    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         
         btnmenu = (Button)findViewById(R.id.showMenu);
         btnmenu.setVisibility(View.GONE);
@@ -71,10 +74,11 @@ public class MainActivity extends Activity{
 			LocationManager locacionMngr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 			//Build the string provider
 			if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-					//get and show map
+				//get and show map
 					getPosicion();
+					
 			}
-			else{
+			else{ //Validamos los mensajes en caso de que el GPS este apagado
 				Toast.makeText(this, R.string.no_gps, Toast.LENGTH_SHORT).show();
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
 				alert.setMessage(R.string.no_gps_alert)
@@ -96,7 +100,7 @@ public class MainActivity extends Activity{
 						System.exit(0);
 					}
 				});
-				
+				//En caso de estar apagado mostramos un mensaje de invitación para encenderlo
 				AlertDialog popup = alert.create();
 				popup.show();
 				
@@ -159,13 +163,17 @@ public class MainActivity extends Activity{
 	 * */
 	public void getPosicion(){
 		locacionMngr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
+				
 		//btnmenu.setActivated(true);
 		 btnmenu.setVisibility(View.VISIBLE);
 		//Build the string provider
 		if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+				
+				pDialog = ProgressDialog.show(this, "Cargando mapa y datos.", "Por favor, espere.");
 				LocationListener listener = new myLocListener();
 				locacionMngr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+				
+				
 		}
 	}
 	
@@ -184,6 +192,7 @@ public class MainActivity extends Activity{
 			try{
 				if(mapa==null) { //obtenemos e inicializamos el mapa
 					mapa = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapa)).getMap();
+					
 					if(mapa!=null){
 						//mapa.setMyLocationEnabled(true);
 						
@@ -196,6 +205,7 @@ public class MainActivity extends Activity{
 						.build();
 						//efecto de zoom si la version de android la soporta.
 						mapa.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+					
 					}
 				}
 				//Obtencion de datos de googleapis/maps
@@ -217,7 +227,7 @@ public class MainActivity extends Activity{
 			}
 			//deshabilitamos la actualización de posición para evitar mayor consumo de datos al encontrar 
 			locacionMngr.removeUpdates(this);
-			
+			if(pDialog.isShowing()) pDialog.dismiss();
 		}
 
 		@Override
@@ -455,15 +465,21 @@ private class getDetallesMunicipio extends AsyncTask<String, String, String>{
 			
 			Log.e("dataHandler", DataHandler.localidad);
 			//Proceso de encriptación  de parametros a enviar por la URL
-			try {
-				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(DataHandler.vecindario)));
+			try { //algunas localidades no tienen vecindario 
+				if(!DataHandler.vecindario.isEmpty())
+					xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(DataHandler.vecindario)));
+				else
+					xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.e("Vecindario", e.getMessage());
 			}
 			
-			try{
-				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(DataHandler.localidad)));
+			try{ //Valida entrada vacia
+				if(!DataHandler.localidad.isEmpty())
+					xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(DataHandler.localidad)));
+				else
+					xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
 			} catch(Exception e){
 				e.printStackTrace();
 				Log.e("Localidad", e.getMessage());

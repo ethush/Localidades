@@ -29,7 +29,7 @@ public class PDFViewerActivity extends Activity {
 			myurl = extras.getString("url");
 		}
 		//Iniciamos un popup de carga
-		progress = ProgressDialog.show(this, "Cargando...", "Por favor, espere.");
+		progress = ProgressDialog.show(this, "Cargando PDF.", "Por favor, espere.");
 		//Instanciamos el visor web y se habilita javascript, es requerido por el visor de google docs
 		WebView web = (WebView) findViewById(R.id.webView);
 		web.getSettings().setJavaScriptEnabled(true); 

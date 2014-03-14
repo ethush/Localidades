@@ -42,7 +42,7 @@
 	<string name="no_data_connection">No se ha encontrado una conexion a datos</string>
 	<string name="exit_message">Volver a presionar para salir</string>
 	<string name="no_position">No se ha logrado adquirir la ubicación GPS.\nConsulte con su proveedor de datos.</string>
-	<string name="no_location">Error al intentar obtener su ubicación.\n Intente dentro de una zona urbana.</string>
+	<string name="no_location">Error al intentar obtener su ubicación.\n Intente dentro de una zona urbana reconocida.</string>
 	<string name="play_services_on">Google Services Disponible.</string>
 	<string name="error_google_services">Debe tener instalado Google Play Store y Google Play Services.</string>
 </resources>
