@@ -6,7 +6,10 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context=".LunchActivity" >
+    tools:context=".LunchActivity" 
+    android:orientation = "vertical"
+    android:screenOrientation="portrait"
+    android:background="#a9a46f">
 
     <ImageView
         android:layout_width="fill_parent"

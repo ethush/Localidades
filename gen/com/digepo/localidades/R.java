@@ -19,6 +19,9 @@ public final class R {
         public static final int zoom_splash=0x7f040007;
         public static final int zoom_splash_out=0x7f040008;
     }
+    public static final class array {
+        public static final int municipios=0x7f0a0000;
+    }
     public static final class attr {
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
@@ -200,109 +203,149 @@ containing a value of this type.
         public static final int boton=0x7f020000;
         public static final int boton_info=0x7f020001;
         public static final int btn_breaker=0x7f020002;
-        public static final int common_signin_btn_icon_dark=0x7f020003;
-        public static final int common_signin_btn_icon_disabled_dark=0x7f020004;
-        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020005;
-        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020006;
-        public static final int common_signin_btn_icon_disabled_light=0x7f020007;
-        public static final int common_signin_btn_icon_focus_dark=0x7f020008;
-        public static final int common_signin_btn_icon_focus_light=0x7f020009;
-        public static final int common_signin_btn_icon_light=0x7f02000a;
-        public static final int common_signin_btn_icon_normal_dark=0x7f02000b;
-        public static final int common_signin_btn_icon_normal_light=0x7f02000c;
-        public static final int common_signin_btn_icon_pressed_dark=0x7f02000d;
-        public static final int common_signin_btn_icon_pressed_light=0x7f02000e;
-        public static final int common_signin_btn_text_dark=0x7f02000f;
-        public static final int common_signin_btn_text_disabled_dark=0x7f020010;
-        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020011;
-        public static final int common_signin_btn_text_disabled_focus_light=0x7f020012;
-        public static final int common_signin_btn_text_disabled_light=0x7f020013;
-        public static final int common_signin_btn_text_focus_dark=0x7f020014;
-        public static final int common_signin_btn_text_focus_light=0x7f020015;
-        public static final int common_signin_btn_text_light=0x7f020016;
-        public static final int common_signin_btn_text_normal_dark=0x7f020017;
-        public static final int common_signin_btn_text_normal_light=0x7f020018;
-        public static final int common_signin_btn_text_pressed_dark=0x7f020019;
-        public static final int common_signin_btn_text_pressed_light=0x7f02001a;
-        public static final int custom_btn_arsenic=0x7f02001b;
-        public static final int divider=0x7f02001c;
-        public static final int ic_action=0x7f02001d;
-        public static final int ic_canada=0x7f02001e;
-        public static final int ic_costa=0x7f02001f;
-        public static final int ic_istmo=0x7f020020;
-        public static final int ic_launcher=0x7f020021;
-        public static final int ic_mixteca=0x7f020022;
-        public static final int ic_oaxaca=0x7f020023;
-        public static final int ic_papaloapam=0x7f020024;
-        public static final int ic_plusone_medium_off_client=0x7f020025;
-        public static final int ic_plusone_small_off_client=0x7f020026;
-        public static final int ic_plusone_standard_off_client=0x7f020027;
-        public static final int ic_plusone_tall_off_client=0x7f020028;
-        public static final int ic_region=0x7f020029;
-        public static final int ic_sierra_norte=0x7f02002a;
-        public static final int ic_sierra_sur=0x7f02002b;
-        public static final int ic_valles_centrales=0x7f02002c;
-        public static final int search=0x7f02002d;
-        public static final int splash=0x7f02002e;
+        public static final int canada_btn=0x7f020003;
+        public static final int common_signin_btn_icon_dark=0x7f020004;
+        public static final int common_signin_btn_icon_disabled_dark=0x7f020005;
+        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020006;
+        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020007;
+        public static final int common_signin_btn_icon_disabled_light=0x7f020008;
+        public static final int common_signin_btn_icon_focus_dark=0x7f020009;
+        public static final int common_signin_btn_icon_focus_light=0x7f02000a;
+        public static final int common_signin_btn_icon_light=0x7f02000b;
+        public static final int common_signin_btn_icon_normal_dark=0x7f02000c;
+        public static final int common_signin_btn_icon_normal_light=0x7f02000d;
+        public static final int common_signin_btn_icon_pressed_dark=0x7f02000e;
+        public static final int common_signin_btn_icon_pressed_light=0x7f02000f;
+        public static final int common_signin_btn_text_dark=0x7f020010;
+        public static final int common_signin_btn_text_disabled_dark=0x7f020011;
+        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020012;
+        public static final int common_signin_btn_text_disabled_focus_light=0x7f020013;
+        public static final int common_signin_btn_text_disabled_light=0x7f020014;
+        public static final int common_signin_btn_text_focus_dark=0x7f020015;
+        public static final int common_signin_btn_text_focus_light=0x7f020016;
+        public static final int common_signin_btn_text_light=0x7f020017;
+        public static final int common_signin_btn_text_normal_dark=0x7f020018;
+        public static final int common_signin_btn_text_normal_light=0x7f020019;
+        public static final int common_signin_btn_text_pressed_dark=0x7f02001a;
+        public static final int common_signin_btn_text_pressed_light=0x7f02001b;
+        public static final int costa_btn=0x7f02001c;
+        public static final int cuenca_btn=0x7f02001d;
+        public static final int custom_btn_arsenic=0x7f02001e;
+        public static final int divider=0x7f02001f;
+        public static final int estado_btn=0x7f020020;
+        public static final int flecha_ico=0x7f020021;
+        public static final int i_economia_ico=0x7f020022;
+        public static final int i_educacion_ico=0x7f020023;
+        public static final int i_lengua_ico=0x7f020024;
+        public static final int i_lim_fisicas_ico=0x7f020025;
+        public static final int i_migracion_ico=0x7f020026;
+        public static final int i_mort_nat_ico=0x7f020027;
+        public static final int i_poblacion_ico=0x7f020028;
+        public static final int i_religion_ico=0x7f020029;
+        public static final int i_salud_ico=0x7f02002a;
+        public static final int i_sit_conyugal_ico=0x7f02002b;
+        public static final int i_vivienda_ico=0x7f02002c;
+        public static final int ic_action=0x7f02002d;
+        public static final int ic_oaxaca=0x7f02002e;
+        public static final int ic_plusone_medium_off_client=0x7f02002f;
+        public static final int ic_plusone_small_off_client=0x7f020030;
+        public static final int ic_plusone_standard_off_client=0x7f020031;
+        public static final int ic_plusone_tall_off_client=0x7f020032;
+        public static final int ico_sol=0x7f020033;
+        public static final int istmo_btn=0x7f020034;
+        public static final int m_estatal_ico=0x7f020035;
+        public static final int m_municipal_ico=0x7f020036;
+        public static final int m_pais_ico=0x7f020037;
+        public static final int m_region_ico=0x7f020038;
+        public static final int mixteca_btn=0x7f020039;
+        public static final int municipio_btn=0x7f02003a;
+        public static final int next_menu_ico=0x7f02003b;
+        public static final int norte_btn=0x7f02003c;
+        public static final int pais_btn=0x7f02003d;
+        public static final int r_canada_ico=0x7f02003e;
+        public static final int r_costa_ico=0x7f02003f;
+        public static final int r_cuenca_ico=0x7f020040;
+        public static final int r_istmo_ico=0x7f020041;
+        public static final int r_mixteca_ico=0x7f020042;
+        public static final int r_norte_ico=0x7f020043;
+        public static final int r_sur_ico=0x7f020044;
+        public static final int r_valles_ico=0x7f020045;
+        public static final int region_btn=0x7f020046;
+        public static final int search_mun_actual_ico=0x7f020047;
+        public static final int splash=0x7f020048;
+        public static final int sur_btn=0x7f020049;
+        public static final int valles_btn=0x7f02004a;
     }
     public static final class id {
-        public static final int action_settings=0x7f060022;
-        public static final int estatal=0x7f060015;
-        public static final int graf1=0x7f060009;
-        public static final int graf10=0x7f060012;
-        public static final int graf2=0x7f06000a;
-        public static final int graf3=0x7f06000b;
-        public static final int graf4=0x7f06000c;
-        public static final int graf5=0x7f06000d;
-        public static final int graf6=0x7f06000e;
-        public static final int graf7=0x7f06000f;
-        public static final int graf8=0x7f060010;
-        public static final int graf9=0x7f060011;
+        public static final int action_settings=0x7f060025;
+        public static final int editText1=0x7f060010;
+        public static final int estatal=0x7f060018;
+        public static final int graf1=0x7f060005;
+        public static final int graf10=0x7f06000e;
+        public static final int graf11=0x7f06000f;
+        public static final int graf2=0x7f060006;
+        public static final int graf3=0x7f060007;
+        public static final int graf4=0x7f060008;
+        public static final int graf5=0x7f060009;
+        public static final int graf6=0x7f06000a;
+        public static final int graf7=0x7f06000b;
+        public static final int graf8=0x7f06000c;
+        public static final int graf9=0x7f06000d;
         public static final int hybrid=0x7f060004;
-        public static final int localidad=0x7f060006;
-        public static final int locality=0x7f060019;
-        public static final int mapa=0x7f060007;
+        public static final int lista=0x7f060011;
+        public static final int localidad=0x7f060013;
+        public static final int locality=0x7f06001b;
+        public static final int mapa=0x7f060014;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int political=0x7f060018;
-        public static final int region=0x7f060016;
-        public static final int region1=0x7f06001a;
-        public static final int region2=0x7f06001b;
-        public static final int region3=0x7f06001c;
-        public static final int region4=0x7f06001d;
-        public static final int region5=0x7f06001e;
-        public static final int region6=0x7f06001f;
-        public static final int region7=0x7f060020;
-        public static final int region8=0x7f060021;
-        public static final int remoteImg=0x7f060005;
+        public static final int political=0x7f06001a;
+        public static final int product_name=0x7f060024;
+        public static final int region=0x7f060019;
+        public static final int region1=0x7f06001c;
+        public static final int region2=0x7f06001d;
+        public static final int region3=0x7f06001e;
+        public static final int region4=0x7f06001f;
+        public static final int region5=0x7f060020;
+        public static final int region6=0x7f060021;
+        public static final int region7=0x7f060022;
+        public static final int region8=0x7f060023;
+        public static final int remoteImg=0x7f060012;
         public static final int satellite=0x7f060002;
-        public static final int showMenu=0x7f060008;
-        public static final int tableRow1=0x7f060014;
-        public static final int tableRow2=0x7f060017;
+        public static final int showMenu=0x7f060015;
+        public static final int showMenuMunicipio=0x7f060016;
         public static final int terrain=0x7f060003;
-        public static final int webView=0x7f060013;
+        public static final int webView=0x7f060017;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
     }
     public static final class layout {
-        public static final int activity_img_view=0x7f030000;
-        public static final int activity_lunch=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_menu=0x7f030003;
-        public static final int activity_pdfviewer=0x7f030004;
-        public static final int activity_political=0x7f030005;
-        public static final int activity_political_menu=0x7f030006;
-        public static final int activity_region=0x7f030007;
+        public static final int activity_estado=0x7f030000;
+        public static final int activity_finder=0x7f030001;
+        public static final int activity_img_view=0x7f030002;
+        public static final int activity_lunch=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_menu=0x7f030005;
+        public static final int activity_pais=0x7f030006;
+        public static final int activity_pdfviewer=0x7f030007;
+        public static final int activity_political=0x7f030008;
+        public static final int activity_political_menu=0x7f030009;
+        public static final int activity_region=0x7f03000a;
+        public static final int activity_region_menu=0x7f03000b;
+        public static final int list_item=0x7f03000c;
     }
     public static final class menu {
-        public static final int img_view=0x7f0b0000;
-        public static final int lunch=0x7f0b0001;
-        public static final int main=0x7f0b0002;
-        public static final int menu=0x7f0b0003;
-        public static final int pdfviewer=0x7f0b0004;
-        public static final int political_menu=0x7f0b0005;
-        public static final int region=0x7f0b0006;
+        public static final int estado=0x7f0c0000;
+        public static final int finder=0x7f0c0001;
+        public static final int img_view=0x7f0c0002;
+        public static final int lunch=0x7f0c0003;
+        public static final int main=0x7f0c0004;
+        public static final int menu=0x7f0c0005;
+        public static final int pais=0x7f0c0006;
+        public static final int pdfviewer=0x7f0c0007;
+        public static final int political_menu=0x7f0c0008;
+        public static final int region=0x7f0c0009;
+        public static final int region_menu=0x7f0c000a;
     }
     public static final class string {
         public static final int action_settings=0x7f07001b;
@@ -413,18 +456,31 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f070013;
         public static final int descripcion=0x7f07001d;
-        public static final int error_google_services=0x7f070046;
-        public static final int exit_message=0x7f070042;
+        public static final int dwelling=0x7f07003c;
+        public static final int economy=0x7f07003f;
+        public static final int education=0x7f07003e;
+        public static final int error_google_services=0x7f070051;
+        public static final int exit_message=0x7f07004d;
+        public static final int fertility=0x7f07003d;
+        public static final int global=0x7f070056;
+        public static final int health=0x7f070042;
         public static final int hello_world=0x7f070020;
+        public static final int language=0x7f070044;
         public static final int locality=0x7f070031;
         public static final int locality_name=0x7f07001e;
-        public static final int no=0x7f070040;
-        public static final int no_data_connection=0x7f070041;
-        public static final int no_gps=0x7f07003d;
-        public static final int no_gps_alert=0x7f07003e;
-        public static final int no_location=0x7f070044;
-        public static final int no_position=0x7f070043;
-        public static final int play_services_on=0x7f070045;
+        public static final int marital=0x7f070040;
+        public static final int migration=0x7f070045;
+        public static final int municipio=0x7f070057;
+        public static final int no=0x7f07004b;
+        public static final int no_data_connection=0x7f07004c;
+        public static final int no_gps=0x7f070048;
+        public static final int no_gps_alert=0x7f070049;
+        public static final int no_location=0x7f07004f;
+        public static final int no_position=0x7f07004e;
+        public static final int on_load_url_error=0x7f070058;
+        public static final int physical=0x7f070041;
+        public static final int play_services_on=0x7f070050;
+        public static final int poblacion=0x7f07003b;
         public static final int political=0x7f070030;
         public static final int region=0x7f07002f;
         public static final int region1=0x7f070033;
@@ -435,15 +491,21 @@ containing a value of this type.
         public static final int region6=0x7f070038;
         public static final int region7=0x7f070039;
         public static final int region8=0x7f07003a;
+        public static final int religion=0x7f070043;
         public static final int showmenu=0x7f07002b;
         public static final int state=0x7f07002e;
+        public static final int title_activity_estado=0x7f070053;
+        public static final int title_activity_finder=0x7f070055;
         public static final int title_activity_img_view=0x7f07002c;
-        public static final int title_activity_lunch=0x7f07003c;
+        public static final int title_activity_lunch=0x7f070047;
         public static final int title_activity_menu=0x7f07001f;
+        public static final int title_activity_pais=0x7f070052;
         public static final int title_activity_pdfviewer=0x7f070032;
         public static final int title_activity_political_menu=0x7f07002d;
-        public static final int title_activity_region=0x7f07003b;
-        public static final int yes=0x7f07003f;
+        public static final int title_activity_region=0x7f070046;
+        public static final int title_activity_region_menu=0x7f070054;
+        public static final int to_find=0x7f070059;
+        public static final int yes=0x7f07004a;
     }
     public static final class style {
         /** 
@@ -470,20 +532,42 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0a0000;
+        public static final int AppBaseTheme=0x7f0b0000;
         /**  Application theme. 
          */
-        public static final int AppTheme=0x7f0a0001;
-        public static final int FullscreenActionBarStyle=0x7f0a000b;
-        public static final int FullscreenTheme=0x7f0a000a;
-        public static final int background=0x7f0a0002;
-        public static final int background_datos=0x7f0a0004;
-        public static final int background_menu=0x7f0a0003;
-        public static final int btnStyleArsenic=0x7f0a0006;
-        public static final int btnStyleBreakerBay=0x7f0a0007;
-        public static final int mybutton=0x7f0a0008;
-        public static final int mybutton_info=0x7f0a0009;
-        public static final int scrollView=0x7f0a0005;
+        public static final int AppTheme=0x7f0b0001;
+        public static final int FullscreenActionBarStyle=0x7f0b001a;
+        public static final int FullscreenTheme=0x7f0b0019;
+        public static final int background=0x7f0b0002;
+        public static final int background_datos=0x7f0b0004;
+        public static final int background_menu=0x7f0b0003;
+        public static final int btnStyleArsenic1=0x7f0b0006;
+        public static final int btnStyleArsenic2=0x7f0b0007;
+        public static final int btnStyleBreakerBay=0x7f0b0008;
+        /**  Menú de regiones 
+         */
+        public static final int btn_canada=0x7f0b0010;
+        public static final int btn_costa=0x7f0b0011;
+        public static final int btn_cuenca=0x7f0b0014;
+        public static final int btn_istmo=0x7f0b0012;
+        public static final int btn_mixteca=0x7f0b0013;
+        public static final int btn_norte=0x7f0b0015;
+        public static final int btn_sur=0x7f0b0016;
+        public static final int btn_valles=0x7f0b0017;
+        public static final int button_estado=0x7f0b000d;
+        public static final int button_main=0x7f0b000b;
+        public static final int button_municipio=0x7f0b000f;
+        public static final int button_pais=0x7f0b000c;
+        public static final int button_region=0x7f0b000e;
+        /**  contenedor de la lista de municipios 
+         */
+        public static final int contenedor_lst=0x7f0b0018;
+        public static final int lista=0x7f0b001b;
+        public static final int mybutton=0x7f0b0009;
+        /**  <item name="android:gravity">left</item> 
+         */
+        public static final int mybutton_info=0x7f0b000a;
+        public static final int scrollView=0x7f0b0005;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

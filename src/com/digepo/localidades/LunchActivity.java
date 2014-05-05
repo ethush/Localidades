@@ -29,7 +29,7 @@ public class LunchActivity extends Activity {
 		Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resCode, this,10);
 		switch (resCode) {
 			case ConnectionResult.SUCCESS: //si es correcto accesamos a la aplicación
-				Toast.makeText(this, R.string.play_services_on, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(this, R.string.play_services_on, Toast.LENGTH_SHORT).show();
 				TimerTask task = new TimerTask() {
 					
 					@Override

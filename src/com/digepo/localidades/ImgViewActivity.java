@@ -1,3 +1,4 @@
+
 package com.digepo.localidades;
 
 import android.os.Bundle;
@@ -12,11 +13,11 @@ public class ImgViewActivity extends Activity {
 		setContentView(R.layout.activity_img_view);
 		
 		Bundle extras  = getIntent().getExtras();
-		TouchImageView imagen = (TouchImageView) findViewById(R.id.remoteImg);
+		//TouchImageView imagen = (TouchImageView) findViewById(R.id.remoteImg);
 		
 		if(extras != null){
 			int grafico = extras.getInt("grafico");
-			imagen.setImageDrawable(DataHandler.graph1);
+			//imagen.setImageDrawable(DataHandler.graph1);
 			switch (grafico) {
 			case 1:
 				

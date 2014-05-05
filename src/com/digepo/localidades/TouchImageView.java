@@ -926,7 +926,8 @@ public class TouchImageView extends ImageView {
         }
     }
     
-    private void printMatrixInfo() {
+    @SuppressWarnings("unused")
+	private void printMatrixInfo() {
             matrix.getValues(m);
             Log.d(DEBUG, "Scale: " + m[Matrix.MSCALE_X] + " TransX: " + m[Matrix.MTRANS_X] + " TransY: " + m[Matrix.MTRANS_Y]);
     }

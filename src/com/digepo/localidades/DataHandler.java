@@ -1,7 +1,5 @@
 package com.digepo.localidades;
 
-import android.graphics.drawable.Drawable;
-
 /*
  * Advice: the url to view pdf data uses a google docs emmbed and the abuse of bandwidth
  * doesn't show properly the document, the url is used in this way
@@ -19,11 +17,11 @@ public class DataHandler {
 	//if uses Genymotion emulator
 	//static String _HOST = "http://10.0.3.2/";
 	//static String _HOST = "http://durmanriegossolucionesagricolas.com.mx";
-	static String _HOST = "http://www.gioax.com.mx";
+	//static String _HOST = "http://www.gioax.com.mx";
 	//if uses android emulator also in ahrdware device
 	//static String _HOST = "http://10.0.2.2/";
-	static String _ROOT = "digepo_SIG";
-	static String _SCRIPT = "data.php";
+	//static String _ROOT = "digepo_SIG";
+	//static String _SCRIPT = "data.php";
 	
 	/*
 	 * Basic data information lo show in some screens and info manipulation
@@ -32,22 +30,9 @@ public class DataHandler {
 	static String vecindario = "";
     static String municipio = "";
 	static String region = "";
-	
-    
-    /*If needed show image*/
-    static Drawable graph1 = null;
-    static Drawable graph2 = null;
-    static Drawable graph3 = null;
-    static Drawable graph4 = null;
-    static Drawable graph5 = null;
-    static Drawable graph6 = null;
-    static Drawable graph7 = null;
-    static Drawable graph8 = null;
-    static Drawable graph9 = null;
-    static Drawable graph10 = null;
     
     /* If needed show web url views
-     * For generic use and avoid modify the code change the url string inserver side
+     * For generic use and avoid modify the code change the url String inserver side
      * temporaly will be store in this class for easy access and debug, to deplyment please
      * please use return complete url in server side.*/
     static String doc1 = "";
@@ -60,31 +45,139 @@ public class DataHandler {
     static String doc8 = "";
     static String doc9 = "";
     static String doc10 = "";
+    static String doc11 = "";
+    
+    static String pais_doc1 = "";
+    static String pais_doc2 = "";
+    static String pais_doc3 = "";
+    static String pais_doc4 = "";
+    static String pais_doc5 = "";
+    static String pais_doc6 = "";
+    static String pais_doc7 = "";
+    static String pais_doc8 = "";
+    static String pais_doc9 = "";
+    static String pais_doc10 = "";
+    static String pais_doc11 = "";
+    
+    static String estado_doc1 = "";
+    static String estado_doc2 = "";
+    static String estado_doc3 = "";
+    static String estado_doc4 = "";
+    static String estado_doc5 = "";
+    static String estado_doc6 = "";
+    static String estado_doc7 = "";
+    static String estado_doc8 = "";
+    static String estado_doc9 = "";
+    static String estado_doc10 = "";
+    static String estado_doc11 = "";
+    
     
     /*
      * URL to show pdf information from regions in order:
-     * <string name="region1">Cañada</string>
-     * <string name="region2">Costa</string>
-     * <string name="region3">Istmo</string>
-     * <string name="region4">Mixteca</string>
-     * <string name="region5">Papaloapam</string>
-     * <string name="region6">Sierra Norte</string>
-     * <string name="region7">Sierra Sur</string>
-     * <string name="region8">Valles centrales</string>
+     * <String name="region1">Cañada</String>
+     * <String name="region2">Costa</String>
+     * <String name="region3">Istmo</String>
+     * <String name="region4">Mixteca</String>
+     * <String name="region5">Papaloapam</String>
+     * <String name="region6">Sierra Norte</String>
+     * <String name="region7">Sierra Sur</String>
+     * <String name="region8">Valles centrales</String>
      * */
     
-    static String region1 = "";
-    static String region2 = "";
-    static String region3 = "";
-    static String region4 = "";
-    static String region5 = "";
-    static String region6 = "";
-    static String region7 = "";
-    static String region8 = "";
+    static String canada_doc1 = "";
+    static String canada_doc2 = "";
+    static String canada_doc3 = "";
+    static String canada_doc4 = "";
+    static String canada_doc5 = "";
+    static String canada_doc6 = "";
+    static String canada_doc7 = "";
+    static String canada_doc8 = "";
+    static String canada_doc9 = "";
+    static String canada_doc10 = "";
+    static String canada_doc11 = "";
     
-    /*
-     * Static urls to general documents info by State,
-     * */
-    static String url_state = "";
+    static String costa_doc1 = "";
+    static String costa_doc2 = "";
+    static String costa_doc3 = "";
+    static String costa_doc4 = "";
+    static String costa_doc5 = "";
+    static String costa_doc6 = "";
+    static String costa_doc7 = "";
+    static String costa_doc8 = "";
+    static String costa_doc9 = "";
+    static String costa_doc10 = "";
+    static String costa_doc11 = "";
+    
+    static String istmo_doc1 = "";
+    static String istmo_doc2 = "";
+    static String istmo_doc3 = "";
+    static String istmo_doc4 = "";
+    static String istmo_doc5 = "";
+    static String istmo_doc6 = "";
+    static String istmo_doc7 = "";
+    static String istmo_doc8 = "";
+    static String istmo_doc9 = "";
+    static String istmo_doc10 = "";
+    static String istmo_doc11 = "";
+    
+    static String mixteca_doc1 = "";
+    static String mixteca_doc2 = "";
+    static String mixteca_doc3 = "";
+    static String mixteca_doc4 = "";
+    static String mixteca_doc5 = "";
+    static String mixteca_doc6 = "";
+    static String mixteca_doc7 = "";
+    static String mixteca_doc8 = "";
+    static String mixteca_doc9 = "";
+    static String mixteca_doc10 = "";
+    static String mixteca_doc11 = "";
+    
+    static String papaloapam_doc1 = "";
+    static String papaloapam_doc2 = "";
+    static String papaloapam_doc3 = "";
+    static String papaloapam_doc4 = "";
+    static String papaloapam_doc5 = "";
+    static String papaloapam_doc6 = "";
+    static String papaloapam_doc7 = "";
+    static String papaloapam_doc8 = "";
+    static String papaloapam_doc9 = "";
+    static String papaloapam_doc10 = "";
+    static String papaloapam_doc11 = "";
+    
+    static String sierra_norte_doc1 = "";
+    static String sierra_norte_doc2 = "";
+    static String sierra_norte_doc3 = "";
+    static String sierra_norte_doc4 = "";
+    static String sierra_norte_doc5 = "";
+    static String sierra_norte_doc6 = "";
+    static String sierra_norte_doc7 = "";
+    static String sierra_norte_doc8 = "";
+    static String sierra_norte_doc9 = "";
+    static String sierra_norte_doc10 = "";
+    static String sierra_norte_doc11 = "";
+    
+    static String sierra_sur_doc1 = "";
+    static String sierra_sur_doc2 = "";
+    static String sierra_sur_doc3 = "";
+    static String sierra_sur_doc4 = "";
+    static String sierra_sur_doc5 = "";
+    static String sierra_sur_doc6 = "";
+    static String sierra_sur_doc7 = "";
+    static String sierra_sur_doc8 = "";
+    static String sierra_sur_doc9 = "";
+    static String sierra_sur_doc10 = "";
+    static String sierra_sur_doc11 = "";
+    
+    static String valles_centrales_doc1 = "";
+    static String valles_centrales_doc2 = "";
+    static String valles_centrales_doc3 = "";
+    static String valles_centrales_doc4 = "";
+    static String valles_centrales_doc5 = "";
+    static String valles_centrales_doc6 = "";
+    static String valles_centrales_doc7 = "";
+    static String valles_centrales_doc8 = "";
+    static String valles_centrales_doc9 = "";
+    static String valles_centrales_doc10 = "";
+    static String valles_centrales_doc11 = "";
     
 }

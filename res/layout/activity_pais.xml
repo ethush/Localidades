@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/background_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="2dp"
+    android:screenOrientation="portrait"
+    android:background="#a9a46f"    
+    tools:context=".MenuActivity" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <Button
+            android:id="@+id/graf1"
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_poblacion_ico"
+            android:drawableRight="@drawable/flecha_ico" 
+            android:background="#ada770"/>
+      	
+
+       <Button 
+            android:id="@+id/graf2" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_vivienda_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#b4ae7b"/>
+
+       <Button 
+            android:id="@+id/graf3" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+           android:layout_height="100dp"
+           android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_mort_nat_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#bab585"/>
+<!--             android:onClick="showGraf3"/> -->
+       <Button 
+            android:id="@+id/graf4" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+           android:layout_height="100dp"
+           android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_educacion_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#c1bb90"/>
+
+       <Button 
+            android:id="@+id/graf5" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_economia_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#c7c29b"/>
+
+       <Button 
+            android:id="@+id/graf6" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_sit_conyugal_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#cec9a6"/>
+
+       <Button 
+            android:id="@+id/graf7" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_lim_fisicas_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#d4d0b1"/>
+      
+       <Button 
+            android:id="@+id/graf8" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_salud_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#dbd7bd"/>
+
+       <Button 
+            android:id="@+id/graf9" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="0dp"
+            
+            android:drawableLeft="@drawable/i_religion_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#e2dec8"/>
+
+       <Button 
+            android:id="@+id/graf10" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            
+            android:drawableLeft="@drawable/i_lengua_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#e8e5d4"/>
+
+       <Button 
+            android:id="@+id/graf11" 
+            style="@style/mybutton_info"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            
+            android:drawableLeft="@drawable/i_migracion_ico"
+            android:drawableRight="@drawable/flecha_ico"
+            android:background="#efecdf"/>
+           
+    </LinearLayout>
+    
+</ScrollView>

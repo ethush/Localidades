@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public class PDFViewerActivity extends Activity {
 	/*
@@ -28,6 +29,7 @@ public class PDFViewerActivity extends Activity {
 		if(extras != null){
 			myurl = extras.getString("url");
 		}
+		//Log.e("Ruta PDF",myurl);
 		//Iniciamos un popup de carga
 		progress = ProgressDialog.show(this, "Cargando PDF.", "Por favor, espere.");
 		//Instanciamos el visor web y se habilita javascript, es requerido por el visor de google docs
@@ -35,9 +37,12 @@ public class PDFViewerActivity extends Activity {
 		web.getSettings().setJavaScriptEnabled(true); 
 		web.getSettings().setUseWideViewPort(true);
 		web.setWebViewClient(new WebViewClient(){
+			
 			@Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+				
+				view.loadUrl(url);
+								
                 return true;              
             }
             @Override
@@ -49,7 +54,16 @@ public class PDFViewerActivity extends Activity {
             
 		});
 		//y cargamos la url
-		web.loadUrl(myurl);
+		if(!myurl.isEmpty()){
+			web.loadUrl(myurl);
+		}
+		else{
+			web.stopLoading();
+			progress.dismiss();
+			
+			Toast.makeText(getApplicationContext(), R.string.on_load_url_error, Toast.LENGTH_SHORT).show();
+		}
+			
 	}
 
 	@Override

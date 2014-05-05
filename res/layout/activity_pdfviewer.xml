@@ -6,6 +6,8 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
+    android:background="#a9a46f"    
+    android:screenOrientation="portrait"
     tools:context=".PDFViewerActivity" >
 
     <WebView

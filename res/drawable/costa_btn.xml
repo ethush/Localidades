@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+     
+     <item android:state_pressed="true" ><!-- boton suelto -->         
+         <layer-list>
+            <item>
+        		<shape android:shape="rectangle"  >
+             		<!-- <stroke android:width="1dip" android:color="#003a69" /> -->
+             		<solid android:color="#ada770" />
+             		<!-- <gradient  android:angle="-90"  android:startColor="@android:color/transparent" android:endColor="#2b8cc4" /> -->     
+         		</shape>        
+            </item>
+            <item>
+        		<bitmap android:src="@drawable/r_costa_ico" android:gravity="left" ></bitmap>        
+            </item>
+        </layer-list>  
+     </item>
+    <item android:state_focused="true"> <!-- push boton -->
+        <bitmap android:src="@drawable/r_costa_ico" android:gravity="left" ></bitmap>
+         <shape android:shape="rectangle" >
+             <stroke android:width="1dip" android:color="#6a6250" /> <!-- Prueba de color café -->
+             <solid  android:color="#827f56"/> <!-- verde -->
+         </shape>
+     </item> 
+    <item ><!-- boton estado inicial -->  
+        <layer-list>
+            <item>
+        		<shape android:shape="rectangle"  >
+             		<!-- <stroke android:width="1dip" android:color="#003e74" /> -->
+             		<gradient  android:angle="-90"  android:startColor="#a9a46f" android:endColor="#a9a46f"  />
+             		<!-- <gradient  android:angle="-90"  android:startColor="#003e74" android:endColor="#003e74"  />   -->   
+         		</shape>        
+            </item>
+             <item>
+        		<bitmap android:src="@drawable/r_costa_ico" android:gravity="left" ></bitmap>        
+            </item>
+        </layer-list>        
+     </item>
+     
+</selector>

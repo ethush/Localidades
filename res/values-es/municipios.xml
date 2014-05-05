@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="municipios">
+       <item>Abejones</item>
+		<item>Acatlán de Pérez Figueroa</item>
+		<item>Asunción Cacalotepec</item>
+		<item>Asunción Cuyotepeji</item>
+		<item>Asunción Ixtaltepec</item>
+		<item>Asunción Nochixtlán</item>
+		<item>Asunción Ocotlán</item>
+		<item>Asunción Tlacolulita</item>
+		<item>Ayotzintepec</item>
+		<item>El Barrio de la Soledad</item>
+		<item>Calihualá</item>
+		<item>Candelaria Loxicha</item>
+		<item>Ciénega de Zimatlán</item>
+		<item>Ciudad Ixtepec</item>
+		<item>Coatecas Altas</item>
+		<item>Coicoyán de las Flores</item>
+		<item>La Compañía</item>
+		<item>Concepción Buenavista</item>
+		<item>Concepción Pápalo</item>
+		<item>Constancia del Rosario</item>
+		<item>Cosolapa</item>
+		<item>Cosoltepec</item>
+		<item>Cuilápam de Guerrero</item>
+		<item>Cuyamecalco Villa de Zaragoza</item>
+		<item>Chahuites</item>
+		<item>Chalcatongo de Hidalgo</item>
+		<item>Chiquihuitlán de Benito Juárez</item>
+		<item>Heroica Ciudad de Ejutla de Crespo</item>
+		<item>Eloxochitlán de Flores Magón</item>
+		<item>El Espinal</item>
+		<item>Tamazulápam del Espíritu Santo</item>
+		<item>Fresnillo de Trujano</item>
+		<item>Guadalupe Etla</item>
+		<item>Guadalupe de Ramírez</item>
+		<item>Guelatao de Juárez</item>
+		<item>Guevea de Humboldt</item>
+		<item>Mesones Hidalgo</item>
+		<item>Villa Hidalgo</item>
+		<item>Heroica Ciudad de Huajuapan de León</item>
+		<item>Huautepec</item>
+		<item>Huautla de Jiménez</item>
+		<item>Ixtlán de Juárez</item>
+		<item>Heroica Ciudad de Juchitán de Zaragoza</item>
+		<item>Loma Bonita</item>
+		<item>Magdalena Apasco</item>
+		<item>Magdalena Jaltepec</item>
+		<item>Santa Magdalena Jicotlán</item>
+		<item>Magdalena Mixtepec</item>
+		<item>Magdalena Ocotlán</item>
+		<item>Magdalena Peñasco</item>
+		<item>Magdalena Teitipac</item>
+		<item>Magdalena Tequisistlán</item>
+		<item>Magdalena Tlacotepec</item>
+		<item>Magdalena Zahuatlán</item>
+		<item>Mariscala de Juárez</item>
+		<item>Mártires de Tacubaya</item>
+		<item>Matías Romero Avendaño</item>
+		<item>Mazatlán Villa de Flores</item>
+		<item>Miahuatlán de Porfirio Díaz</item>
+		<item>Mixistlán de la Reforma</item>
+		<item>Monjas</item>
+		<item>Natividad</item>
+		<item>Nazareno Etla</item>
+		<item>Nejapa de Madero</item>
+		<item>Ixpantepec Nieves</item>
+		<item>Santiago Niltepec</item>
+		<item>Oaxaca de Juárez</item>
+		<item>Ocotlán de Morelos</item>
+		<item>La Pe</item>
+		<item>Pinotepa de Don Luis</item>
+		<item>Pluma Hidalgo</item>
+		<item>San José del Progreso</item>
+		<item>Putla Villa de Guerrero</item>
+		<item>Santa Catarina Quioquitani</item>
+		<item>Reforma de Pineda</item>
+		<item>La Reforma</item>
+		<item>Reyes Etla</item>
+		<item>Rojas de Cuauhtémoc</item>
+		<item>Salina Cruz</item>
+		<item>San Agustín Amatengo</item>
+		<item>San Agustín Atenango</item>
+		<item>San Agustín Chayuco</item>
+		<item>San Agustín de las Juntas</item>
+		<item>San Agustín Etla</item>
+		<item>San Agustín Loxicha</item>
+		<item>San Agustín Tlacotepec</item>
+		<item>San Agustín Yatareni</item>
+		<item>San Andrés Cabecera Nueva</item>
+		<item>San Andrés Dinicuiti</item>
+		<item>San Andrés Huaxpaltepec</item>
+		<item>San Andrés Huayápam</item>
+		<item>San Andrés Ixtlahuaca</item>
+		<item>San Andrés Lagunas</item>
+		<item>San Andrés Nuxiño</item>
+		<item>San Andrés Paxtlán</item>
+		<item>San Andrés Sinaxtla</item>
+		<item>San Andrés Solaga</item>
+		<item>San Andrés Teotilálpam</item>
+		<item>San Andrés Tepetlapa</item>
+		<item>San Andrés Yaá</item>
+		<item>San Andrés Zabache</item>
+		<item>San Andrés Zautla</item>
+		<item>San Antonino Castillo Velasco</item>
+		<item>San Antonino el Alto</item>
+		<item>San Antonino Monte Verde</item>
+		<item>San Antonio Acutla</item>
+		<item>San Antonio de la Cal</item>
+		<item>San Antonio Huitepec</item>
+		<item>San Antonio Nanahuatípam</item>
+		<item>San Antonio Sinicahua</item>
+		<item>San Antonio Tepetlapa</item>
+		<item>San Baltazar Chichicápam</item>
+		<item>San Baltazar Loxicha</item>
+		<item>San Baltazar Yatzachi el Bajo</item>
+		<item>San Bartolo Coyotepec</item>
+		<item>San Bartolomé Ayautla</item>
+		<item>San Bartolomé Loxicha</item>
+		<item>San Bartolomé Quialana</item>
+		<item>San Bartolomé Yucuañe</item>
+		<item>San Bartolomé Zoogocho</item>
+		<item>San Bartolo Soyaltepec</item>
+		<item>San Bartolo Yautepec</item>
+		<item>San Bernardo Mixtepec</item>
+		<item>San Blas Atempa</item>
+		<item>San Carlos Yautepec</item>
+		<item>San Cristóbal Amatlán</item>
+		<item>San Cristóbal Amoltepec</item>
+		<item>San Cristóbal Lachirioag</item>
+		<item>San Cristóbal Suchixtlahuaca</item>
+		<item>San Dionisio del Mar</item>
+		<item>San Dionisio Ocotepec</item>
+		<item>San Dionisio Ocotlán</item>
+		<item>San Esteban Atatlahuca</item>
+		<item>San Felipe Jalapa de Díaz</item>
+		<item>San Felipe Tejalápam</item>
+		<item>San Felipe Usila</item>
+		<item>San Francisco Cahuacuá</item>
+		<item>San Francisco Cajonos</item>
+		<item>San Francisco Chapulapa</item>
+		<item>San Francisco Chindúa</item>
+		<item>San Francisco del Mar</item>
+		<item>San Francisco Huehuetlán</item>
+		<item>San Francisco Ixhuatán</item>
+		<item>San Francisco Jaltepetongo</item>
+		<item>San Francisco Lachigoló</item>
+		<item>San Francisco Logueche</item>
+		<item>San Francisco Nuxaño</item>
+		<item>San Francisco Ozolotepec</item>
+		<item>San Francisco Sola</item>
+		<item>San Francisco Telixtlahuaca</item>
+		<item>San Francisco Teopan</item>
+		<item>San Francisco Tlapancingo</item>
+		<item>San Gabriel Mixtepec</item>
+		<item>San Ildefonso Amatlán</item>
+		<item>San Ildefonso Sola</item>
+		<item>San Ildefonso Villa Alta</item>
+		<item>San Jacinto Amilpas</item>
+		<item>San Jacinto Tlacotepec</item>
+		<item>San Jerónimo Coatlán</item>
+		<item>San Jerónimo Silacayoapilla</item>
+		<item>San Jerónimo Sosola</item>
+		<item>San Jerónimo Taviche</item>
+		<item>San Jerónimo Tecóatl</item>
+		<item>San Jorge Nuchita</item>
+		<item>San José Ayuquila</item>
+		<item>San José Chiltepec</item>
+		<item>San José del Peñasco</item>
+		<item>San José Estancia Grande</item>
+		<item>San José Independencia</item>
+		<item>San José Lachiguiri</item>
+		<item>San José Tenango</item>
+		<item>San Juan Achiutla</item>
+		<item>San Juan Atepec</item>
+		<item>Ánimas Trujano</item>
+		<item>San Juan Bautista Atatlahuca</item>
+		<item>San Juan Bautista Coixtlahuaca</item>
+		<item>San Juan Bautista Cuicatlán</item>
+		<item>San Juan Bautista Guelache</item>
+		<item>San Juan Bautista Jayacatlán</item>
+		<item>San Juan Bautista Lo de Soto</item>
+		<item>San Juan Bautista Suchitepec</item>
+		<item>San Juan Bautista Tlacoatzintepec</item>
+		<item>San Juan Bautista Tlachichilco</item>
+		<item>San Juan Bautista Tuxtepec</item>
+		<item>San Juan Cacahuatepec</item>
+		<item>San Juan Cieneguilla</item>
+		<item>San Juan Coatzóspam</item>
+		<item>San Juan Colorado</item>
+		<item>San Juan Comaltepec</item>
+		<item>San Juan Cotzocón</item>
+		<item>San Juan Chicomezúchil</item>
+		<item>San Juan Chilateca</item>
+		<item>San Juan del Estado</item>
+		<item>San Juan del Río</item>
+		<item>San Juan Diuxi</item>
+		<item>San Juan Evangelista Analco</item>
+		<item>San Juan Guelavía</item>
+		<item>San Juan Guichicovi</item>
+		<item>San Juan Ihualtepec</item>
+		<item>San Juan Juquila Mixes</item>
+		<item>San Juan Juquila Vijanos</item>
+		<item>San Juan Lachao</item>
+		<item>San Juan Lachigalla</item>
+		<item>San Juan Lajarcia</item>
+		<item>San Juan Lalana</item>
+		<item>San Juan de los Cués</item>
+		<item>San Juan Mazatlán</item>
+		<item>San Juan Mixtepec -Dto. 08 -</item>
+		<item>San Juan Mixtepec -Dto. 26 -</item>
+		<item>San Juan Ñumí</item>
+		<item>San Juan Ozolotepec</item>
+		<item>San Juan Petlapa</item>
+		<item>San Juan Quiahije</item>
+		<item>San Juan Quiotepec</item>
+		<item>San Juan Sayultepec</item>
+		<item>San Juan Tabaá</item>
+		<item>San Juan Tamazola</item>
+		<item>San Juan Teita</item>
+		<item>San Juan Teitipac</item>
+		<item>San Juan Tepeuxila</item>
+		<item>San Juan Teposcolula</item>
+		<item>San Juan Yaeé</item>
+		<item>San Juan Yatzona</item>
+		<item>San Juan Yucuita</item>
+		<item>San Lorenzo</item>
+		<item>San Lorenzo Albarradas</item>
+		<item>San Lorenzo Cacaotepec</item>
+		<item>San Lorenzo Cuaunecuiltitla</item>
+		<item>San Lorenzo Texmelúcan</item>
+		<item>San Lorenzo Victoria</item>
+		<item>San Lucas Camotlán</item>
+		<item>San Lucas Ojitlán</item>
+		<item>San Lucas Quiaviní</item>
+		<item>San Lucas Zoquiápam</item>
+		<item>San Luis Amatlán</item>
+		<item>San Marcial Ozolotepec</item>
+		<item>San Marcos Arteaga</item>
+		<item>San Martín de los Cansecos</item>
+		<item>San Martín Huamelúlpam</item>
+		<item>San Martín Itunyoso</item>
+		<item>San Martín Lachilá</item>
+		<item>San Martín Peras</item>
+		<item>San Martín Tilcajete</item>
+		<item>San Martín Toxpalan</item>
+		<item>San Martín Zacatepec</item>
+		<item>San Mateo Cajonos</item>
+		<item>Capulálpam de Méndez</item>
+		<item>San Mateo del Mar</item>
+		<item>San Mateo Yoloxochitlán</item>
+		<item>San Mateo Etlatongo</item>
+		<item>San Mateo Nejápam</item>
+		<item>San Mateo Peñasco</item>
+		<item>San Mateo Piñas</item>
+		<item>San Mateo Río Hondo</item>
+		<item>San Mateo Sindihui</item>
+		<item>San Mateo Tlapiltepec</item>
+		<item>San Melchor Betaza</item>
+		<item>San Miguel Achiutla</item>
+		<item>San Miguel Ahuehuetitlán</item>
+		<item>San Miguel Aloápam</item>
+		<item>San Miguel Amatitlán</item>
+		<item>San Miguel Amatlán</item>
+		<item>San Miguel Coatlán</item>
+		<item>San Miguel Chicahua</item>
+		<item>San Miguel Chimalapa</item>
+		<item>San Miguel del Puerto</item>
+		<item>San Miguel del Río</item>
+		<item>San Miguel Ejutla</item>
+		<item>San Miguel el Grande</item>
+		<item>San Miguel Huautla</item>
+		<item>San Miguel Mixtepec</item>
+		<item>San Miguel Panixtlahuaca</item>
+		<item>San Miguel Peras</item>
+		<item>San Miguel Piedras</item>
+		<item>San Miguel Quetzaltepec</item>
+		<item>San Miguel Santa Flor</item>
+		<item>Villa Sola de Vega</item>
+		<item>San Miguel Soyaltepec</item>
+		<item>San Miguel Suchixtepec</item>
+		<item>Villa Talea de Castro</item>
+		<item>San Miguel Tecomatlán</item>
+		<item>San Miguel Tenango</item>
+		<item>San Miguel Tequixtepec</item>
+		<item>San Miguel Tilquiápam</item>
+		<item>San Miguel Tlacamama</item>
+		<item>San Miguel Tlacotepec</item>
+		<item>San Miguel Tulancingo</item>
+		<item>San Miguel Yotao</item>
+		<item>San Nicolás</item>
+		<item>San Nicolás Hidalgo</item>
+		<item>San Pablo Coatlán</item>
+		<item>San Pablo Cuatro Venados</item>
+		<item>San Pablo Etla</item>
+		<item>San Pablo Huitzo</item>
+		<item>San Pablo Huixtepec</item>
+		<item>San Pablo Macuiltianguis</item>
+		<item>San Pablo Tijaltepec</item>
+		<item>San Pablo Villa de Mitla</item>
+		<item>San Pablo Yaganiza</item>
+		<item>San Pedro Amuzgos</item>
+		<item>San Pedro Apóstol</item>
+		<item>San Pedro Atoyac</item>
+		<item>San Pedro Cajonos</item>
+		<item>San Pedro Coxcaltepec Cántaros</item>
+		<item>San Pedro Comitancillo</item>
+		<item>San Pedro el Alto</item>
+		<item>San Pedro Huamelula</item>
+		<item>San Pedro Huilotepec</item>
+		<item>San Pedro Ixcatlán</item>
+		<item>San Pedro Ixtlahuaca</item>
+		<item>San Pedro Jaltepetongo</item>
+		<item>San Pedro Jicayán</item>
+		<item>San Pedro Jocotipac</item>
+		<item>San Pedro Juchatengo</item>
+		<item>San Pedro Mártir</item>
+		<item>San Pedro Mártir Quiechapa</item>
+		<item>San Pedro Mártir Yucuxaco</item>
+		<item>San Pedro Mixtepec -Dto. 22 -</item>
+		<item>San Pedro Mixtepec -Dto. 26 -</item>
+		<item>San Pedro Molinos</item>
+		<item>San Pedro Nopala</item>
+		<item>San Pedro Ocopetatillo</item>
+		<item>San Pedro Ocotepec</item>
+		<item>San Pedro Pochutla</item>
+		<item>San Pedro Quiatoni</item>
+		<item>San Pedro Sochiápam</item>
+		<item>San Pedro Tapanatepec</item>
+		<item>San Pedro Taviche</item>
+		<item>San Pedro Teozacoalco</item>
+		<item>San Pedro Teutila</item>
+		<item>San Pedro Tidaá</item>
+		<item>San Pedro Topiltepec</item>
+		<item>San Pedro Totolápam</item>
+		<item>Villa de Tututepec de Melchor Ocampo</item>
+		<item>San Pedro Yaneri</item>
+		<item>San Pedro Yólox</item>
+		<item>San Pedro y San Pablo Ayutla</item>
+		<item>Villa de Etla</item>
+		<item>San Pedro y San Pablo Teposcolula</item>
+		<item>San Pedro y San Pablo Tequixtepec</item>
+		<item>San Pedro Yucunama</item>
+		<item>San Raymundo Jalpan</item>
+		<item>San Sebastián Abasolo</item>
+		<item>San Sebastián Coatlán</item>
+		<item>San Sebastián Ixcapa</item>
+		<item>San Sebastián Nicananduta</item>
+		<item>San Sebastián Río Hondo</item>
+		<item>San Sebastián Tecomaxtlahuaca</item>
+		<item>San Sebastián Teitipac</item>
+		<item>San Sebastián Tutla</item>
+		<item>San Simón Almolongas</item>
+		<item>San Simón Zahuatlán</item>
+		<item>Santa Ana</item>
+		<item>Santa Ana Ateixtlahuaca</item>
+		<item>Santa Ana Cuauhtémoc</item>
+		<item>Santa Ana del Valle</item>
+		<item>Santa Ana Tavela</item>
+		<item>Santa Ana Tlapacoyan</item>
+		<item>Santa Ana Yareni</item>
+		<item>Santa Ana Zegache</item>
+		<item>Santa Catalina Quierí</item>
+		<item>Santa Catarina Cuixtla</item>
+		<item>Santa Catarina Ixtepeji</item>
+		<item>Santa Catarina Juquila</item>
+		<item>Santa Catarina Lachatao</item>
+		<item>Santa Catarina Loxicha</item>
+		<item>Santa Catarina Mechoacán</item>
+		<item>Santa Catarina Minas</item>
+		<item>Santa Catarina Quiané</item>
+		<item>Santa Catarina Tayata</item>
+		<item>Santa Catarina Ticuá</item>
+		<item>Santa Catarina Yosonotú</item>
+		<item>Santa Catarina Zapoquila</item>
+		<item>Santa Cruz Acatepec</item>
+		<item>Santa Cruz Amilpas</item>
+		<item>Santa Cruz de Bravo</item>
+		<item>Santa Cruz Itundujia</item>
+		<item>Santa Cruz Mixtepec</item>
+		<item>Santa Cruz Nundaco</item>
+		<item>Santa Cruz Papalutla</item>
+		<item>Santa Cruz Tacache de Mina</item>
+		<item>Santa Cruz Tacahua</item>
+		<item>Santa Cruz Tayata</item>
+		<item>Santa Cruz Xitla</item>
+		<item>Santa Cruz Xoxocotlán</item>
+		<item>Santa Cruz Zenzontepec</item>
+		<item>Santa Gertrudis</item>
+		<item>Santa Inés del Monte</item>
+		<item>Santa Inés Yatzeche</item>
+		<item>Santa Lucía del Camino</item>
+		<item>Santa Lucía Miahuatlán</item>
+		<item>Santa Lucía Monteverde</item>
+		<item>Santa Lucía Ocotlán</item>
+		<item>Santa María Alotepec</item>
+		<item>Santa María Apazco</item>
+		<item>Santa María la Asunción</item>
+		<item>Heroica Ciudad de Tlaxiaco</item>
+		<item>Ayoquezco de Aldama</item>
+		<item>Santa María Atzompa</item>
+		<item>Santa María Camotlán</item>
+		<item>Santa María Colotepec</item>
+		<item>Santa María Cortijo</item>
+		<item>Santa María Coyotepec</item>
+		<item>Santa María Chachoápam</item>
+		<item>Villa de Chilapa de Díaz</item>
+		<item>Santa María Chilchotla</item>
+		<item>Santa María Chimalapa</item>
+		<item>Santa María del Rosario</item>
+		<item>Santa María del Tule</item>
+		<item>Santa María Ecatepec</item>
+		<item>Santa María Guelacé</item>
+		<item>Santa María Guienagati</item>
+		<item>Santa María Huatulco</item>
+		<item>Santa María Huazolotitlán</item>
+		<item>Santa María Ipalapa</item>
+		<item>Santa María Ixcatlán</item>
+		<item>Santa María Jacatepec</item>
+		<item>Santa María Jalapa del Marqués</item>
+		<item>Santa María Jaltianguis</item>
+		<item>Santa María Lachixío</item>
+		<item>Santa María Mixtequilla</item>
+		<item>Santa María Nativitas</item>
+		<item>Santa María Nduayaco</item>
+		<item>Santa María Ozolotepec</item>
+		<item>Santa María Pápalo</item>
+		<item>Santa María Peñoles</item>
+		<item>Santa María Petapa</item>
+		<item>Santa María Quiegolani</item>
+		<item>Santa María Sola</item>
+		<item>Santa María Tataltepec</item>
+		<item>Santa María Tecomavaca</item>
+		<item>Santa María Temaxcalapa</item>
+		<item>Santa María Temaxcaltepec</item>
+		<item>Santa María Teopoxco</item>
+		<item>Santa María Tepantlali</item>
+		<item>Santa María Texcatitlán</item>
+		<item>Santa María Tlahuitoltepec</item>
+		<item>Santa María Tlalixtac</item>
+		<item>Santa María Tonameca</item>
+		<item>Santa María Totolapilla</item>
+		<item>Santa María Xadani</item>
+		<item>Santa María Yalina</item>
+		<item>Santa María Yavesía</item>
+		<item>Santa María Yolotepec</item>
+		<item>Santa María Yosoyúa</item>
+		<item>Santa María Yucuhiti</item>
+		<item>Santa María Zacatepec</item>
+		<item>Santa María Zaniza</item>
+		<item>Santa María Zoquitlán</item>
+		<item>Santiago Amoltepec</item>
+		<item>Santiago Apoala</item>
+		<item>Santiago Apóstol</item>
+		<item>Santiago Astata</item>
+		<item>Santiago Atitlán</item>
+		<item>Santiago Ayuquililla</item>
+		<item>Santiago Cacaloxtepec</item>
+		<item>Santiago Camotlán</item>
+		<item>Santiago Comaltepec</item>
+		<item>Santiago Chazumba</item>
+		<item>Santiago Choápam</item>
+		<item>Santiago del Río</item>
+		<item>Santiago Huajolotitlán</item>
+		<item>Santiago Huauclilla</item>
+		<item>Santiago Ihuitlán Plumas</item>
+		<item>Santiago Ixcuintepec</item>
+		<item>Santiago Ixtayutla</item>
+		<item>Santiago Jamiltepec</item>
+		<item>Santiago Jocotepec</item>
+		<item>Santiago Juxtlahuaca</item>
+		<item>Santiago Lachiguiri</item>
+		<item>Santiago Lalopa</item>
+		<item>Santiago Laollaga</item>
+		<item>Santiago Laxopa</item>
+		<item>Santiago Llano Grande</item>
+		<item>Santiago Matatlán</item>
+		<item>Santiago Miltepec</item>
+		<item>Santiago Minas</item>
+		<item>Santiago Nacaltepec</item>
+		<item>Santiago Nejapilla</item>
+		<item>Santiago Nundiche</item>
+		<item>Santiago Nuyoó</item>
+		<item>Santiago Pinotepa Nacional</item>
+		<item>Santiago Suchilquitongo</item>
+		<item>Santiago Tamazola</item>
+		<item>Santiago Tapextla</item>
+		<item>Villa Tejúpam de la Unión</item>
+		<item>Santiago Tenango</item>
+		<item>Santiago Tepetlapa</item>
+		<item>Santiago Tetepec</item>
+		<item>Santiago Texcalcingo</item>
+		<item>Santiago Textitlán</item>
+		<item>Santiago Tilantongo</item>
+		<item>Santiago Tillo</item>
+		<item>Santiago Tlazoyaltepec</item>
+		<item>Santiago Xanica</item>
+		<item>Santiago Xiacuí</item>
+		<item>Santiago Yaitepec</item>
+		<item>Santiago Yaveo</item>
+		<item>Santiago Yolomécatl</item>
+		<item>Santiago Yosondúa</item>
+		<item>Santiago Yucuyachi</item>
+		<item>Santiago Zacatepec</item>
+		<item>Santiago Zoochila</item>
+		<item>Nuevo Zoquiápam</item>
+		<item>Santo Domingo Ingenio</item>
+		<item>Santo Domingo Albarradas</item>
+		<item>Santo Domingo Armenta</item>
+		<item>Santo Domingo Chihuitán</item>
+		<item>Santo Domingo de Morelos</item>
+		<item>Santo Domingo Ixcatlán</item>
+		<item>Santo Domingo Nuxaá</item>
+		<item>Santo Domingo Ozolotepec</item>
+		<item>Santo Domingo Petapa</item>
+		<item>Santo Domingo Roayaga</item>
+		<item>Santo Domingo Tehuantepec</item>
+		<item>Santo Domingo Teojomulco</item>
+		<item>Santo Domingo Tepuxtepec</item>
+		<item>Santo Domingo Tlatayápam</item>
+		<item>Santo Domingo Tomaltepec</item>
+		<item>Santo Domingo Tonalá</item>
+		<item>Santo Domingo Tonaltepec</item>
+		<item>Santo Domingo Xagacía</item>
+		<item>Santo Domingo Yanhuitlán</item>
+		<item>Santo Domingo Yodohino</item>
+		<item>Santo Domingo Zanatepec</item>
+		<item>Santos Reyes Nopala</item>
+		<item>Santos Reyes Pápalo</item>
+		<item>Santos Reyes Tepejillo</item>
+		<item>Santos Reyes Yucuná</item>
+		<item>Santo Tomás Jalieza</item>
+		<item>Santo Tomás Mazaltepec</item>
+		<item>Santo Tomás Ocotepec</item>
+		<item>Santo Tomás Tamazulapan</item>
+		<item>San Vicente Coatlán</item>
+		<item>San Vicente Lachixío</item>
+		<item>San Vicente Nuñú</item>
+		<item>Silacayoápam</item>
+		<item>Sitio de Xitlapehua</item>
+		<item>Soledad Etla</item>
+		<item>Villa de Tamazulápam del Progreso</item>
+		<item>Tanetze de Zaragoza</item>
+		<item>Taniche</item>
+		<item>Tataltepec de Valdés</item>
+		<item>Teococuilco de Marcos Pérez</item>
+		<item>Teotitlán de Flores Magón</item>
+		<item>Teotitlán del Valle</item>
+		<item>Teotongo</item>
+		<item>Tepelmeme Villa de Morelos</item>
+		<item>Tezoatlán de Segura y Luna</item>
+		<item>San Jerónimo Tlacochahuaya</item>
+		<item>Tlacolula de Matamoros</item>
+		<item>Tlacotepec Plumas</item>
+		<item>Tlalixtac de Cabrera</item>
+		<item>Totontepec Villa de Morelos</item>
+		<item>Trinidad Zaachila</item>
+		<item>La Trinidad Vista Hermosa</item>
+		<item>Unión Hidalgo</item>
+		<item>Valerio Trujano</item>
+		<item>San Juan Bautista Valle Nacional</item>
+		<item>Villa Díaz Ordaz</item>
+		<item>Yaxe</item>
+		<item>Magdalena Yodocono de Porfirio Díaz</item>
+		<item>Yogana</item>
+		<item>Yutanduchi de Guerrero</item>
+		<item>Villa de Zaachila</item>
+		<item>San Mateo Yucutindó</item>
+		<item>Zapotitlán Lagunas</item>
+		<item>Zapotitlán Palmas</item>
+		<item>Santa Inés de Zaragoza</item>
+		<item>Zimatlán de Álvarez</item>
+    </string-array>
+</resources>

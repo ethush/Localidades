@@ -8,6 +8,7 @@
     android:paddingTop="2dp"
     tools:context=".RegionActivity" 
     style="@style/scrollView"
+    android:screenOrientation="portrait"
     android:orientation="vertical">
 
     <LinearLayout 
@@ -17,81 +18,73 @@
     <Button 
         android:id="@+id/region1"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:text="@string/region1"
-        android:drawableLeft="@drawable/ic_canada"
-        android:onClick="showRegion1"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_canada_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+        android:background="#a9a46f"/>
+
     <Button 
         android:id="@+id/region2"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:drawableLeft="@drawable/ic_costa"
-        android:text="@string/region2"
-        android:onClick="showRegion2"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_costa_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+        android:background="#b5b07e"/>
+
     <Button 
         android:id="@+id/region3"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:drawableLeft="@drawable/ic_istmo"
-        android:text="@string/region3"
-        android:onClick="showRegion3"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_istmo_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+        android:background="#bdb88b"/>
+
     <Button 
         android:id="@+id/region4"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:drawableLeft="@drawable/ic_mixteca"        
-        android:text="@string/region4"
-        android:onClick="showRegion4"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_mixteca_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+        android:background="#c6c098"/>
+
     <Button 
         android:id="@+id/region5"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:drawableLeft="@drawable/ic_papaloapam"
-        android:text="@string/region5"
-        android:onClick="showRegion5"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_cuenca_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+        android:background="#cec9a6"/>
+
     <Button 
         android:id="@+id/region6"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:drawableLeft="@drawable/ic_sierra_norte"
-        android:text="@string/region6"
-        android:onClick="showRegion6"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_norte_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+        android:background="#d6d1b4"/>
+
     <Button 
         android:id="@+id/region7"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:layout_marginBottom="4dp"
-        android:drawableLeft="@drawable/ic_sierra_sur"
-        android:text="@string/region7"
-        android:onClick="showRegion7"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_sur_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+       android:background="#dedac2"/>
+
     <Button 
         android:id="@+id/region8"
         style="@style/mybutton_info"
-        android:textSize="22sp"
         android:layout_width="fill_parent"
-        android:layout_height="88dp"
-        android:drawableLeft="@drawable/ic_valles_centrales"
-        android:text="@string/region8"
-        android:onClick="showRegion8"/>
+        android:layout_height="150dp"
+        android:drawableLeft="@drawable/r_valles_ico"
+        android:drawableRight="@drawable/flecha_ico" 
+       android:background="#e6e3d0"/>
 	</LinearLayout>
 </ScrollView>

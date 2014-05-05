@@ -12,12 +12,12 @@
          		</shape>        
             </item>
             <item>
-        		<bitmap android:src="@drawable/ic_oaxaca" android:gravity="center" ></bitmap>        
+<!--         		<bitmap android:src="@drawable/ic_oaxaca" android:gravity="center" ></bitmap>         -->
             </item>
         </layer-list>  
      </item>
     <item android:state_focused="true">
-        <bitmap android:src="@drawable/ic_oaxaca" android:gravity="center" ></bitmap>
+<!--         <bitmap android:src="@drawable/ic_oaxaca" android:gravity="center" ></bitmap> -->
          <shape android:shape="rectangle" >
              <corners android:radius="4dip" />
              <stroke android:width="1dip" android:color="#474b4f" />
@@ -27,7 +27,7 @@
     <item >
         <layer-list>
             <item>
-        		<bitmap android:src="@drawable/ic_oaxaca" android:gravity="center" ></bitmap>        
+<!--         		<bitmap android:src="@drawable/ic_oaxaca" android:gravity="center" ></bitmap>         -->
             </item>
             <item>
         		<shape android:shape="rectangle"  >

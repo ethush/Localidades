@@ -4,6 +4,7 @@
      android:layout_width="match_parent"
      android:layout_height="match_parent"
      tools:context=".MainActivity" 
+     android:screenOrientation="portrait"
      android:orientation="vertical" >
 	    
 	     <TextView
@@ -21,22 +22,31 @@
 	    	class="com.google.android.gms.maps.MapFragment"
 	    	android:apiKey="AIzaSyBXkm_hbJhRQ80m-3WVwTzJw3nNtO4aE4g" />
 	     <!-- Divisor de mapa y contenido -->
-	     <LinearLayout
-		        android:orientation="vertical"
-		        android:layout_width="fill_parent"
-		        android:layout_height="5dp"
-		        android:background="@android:color/transparent"
-		        />
+	     <LinearLayout 
+		    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:gravity="center"		    
+		    >
 
-	      <Button
-	             android:id="@+id/showMenu"
-	             style="@style/btnStyleArsenic"
-	             android:layout_width="wrap_content"
-	             android:layout_height="wrap_content"
-	             android:layout_gravity="center"
-	             android:onClick="showMenu"
-	              />
-	     
+			<Button
+			    android:id="@+id/showMenu"
+			    style="@style/btnStyleArsenic1"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/global"
+			    android:onClick="showMenu" />
+		      
+		      <Button
+			    android:id="@+id/showMenuMunicipio"
+			    style="@style/btnStyleArsenic2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/municipio"
+			    android:onClick="showMenuMunicipio" />
+	      
+	     <!-- Contenido -->
+		</LinearLayout>
 	     <!-- Contenido -->
 	    
 </LinearLayout>

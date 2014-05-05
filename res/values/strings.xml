@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="app_name">DIGEPO SIG</string>
+    <string name="app_name">SEGO</string>
     <string name="action_settings">Settings</string>
     <string name="button">Get data</string>
     <string name="descripcion">Home benefits</string>
@@ -19,13 +19,13 @@
     <string name="boton_grafico9">Show Graph 9</string>
     <string name="boton_grafico10">Show Graph 10</string>
     <string name="showmenu">Menu</string>
-    <string name="title_activity_img_view">DIGEPO SIG</string>
-    <string name="title_activity_political_menu">DIGEPO SIG</string>
-    <string name="state"> Info by State</string>
-    <string name="region">Info by Region</string>
-    <string name="political">Info by Political</string>
-    <string name="locality">Info by Locality</string>
-    <string name="title_activity_pdfviewer">DIGEPO SIG</string>
+    <string name="title_activity_img_view">DIGEPO SEGO</string>
+    <string name="title_activity_political_menu">DIGEPO SEGO</string>
+    <string name="state">State</string>
+    <string name="region">Region</string>
+    <string name="political">Nation</string>
+    <string name="locality">Localities</string>
+    <string name="title_activity_pdfviewer">DIGEPO SEGO</string>
     <string name="region1">Cañada</string>
     <string name="region2">Costa</string>
     <string name="region3">Istmo</string>
@@ -34,16 +34,35 @@
     <string name="region6">Sierra Norte</string>
     <string name="region7">Sierra Sur</string>
     <string name="region8">Valles centrales</string>
+    <string name="poblacion">Population</string>
+    <string name="dwelling">Dwelling</string>
+    <string name="fertility">Fertility and mortality</string>
+    <string name="education">Education</string>
+    <string name="economy">Economy</string>
+    <string name="marital">Marital Status</string>
+    <string name="physical">Physical or mental limitations</string>
+    <string name="health">Healt</string>
+    <string name="religion">Religion</string>
+    <string name="language">Other languages</string>
+    <string name="migration">Migration</string>
     <string name="title_activity_region">Select:</string>
-    <string name="title_activity_lunch">DIGEPO SIG</string>
-	<string name="no_gps">GPS is not active</string>
-	<string name="no_gps_alert">The GPS is turned off, you want to enable it?</string>
-	<string name="yes">Yes</string>
-	<string name="no">No</string>
-	<string name="no_data_connection">Not found data connection </string>
-	<string name="exit_message">Press again to exit.</string>
-	<string name="no_position">Fail to acquire GPS location.\nCheck with your provider data.</string>
-	<string name="no_location">Fail to intent location.\n Try again into a recognized urban zone.</string>
-	<string name="play_services_on">Google Services Disponible.</string>
-	<string name="error_google_services">You must have installed Google Play Store and Services.</string>
+    <string name="title_activity_lunch">DIGEPO SEGO</string>
+    <string name="no_gps">GPS is not active</string>
+    <string name="no_gps_alert">The GPS is turned off, you want to enable it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_data_connection">Not found data connection </string>
+    <string name="exit_message">Press again to exit.</string>
+    <string name="no_position">Fail to acquire GPS location.\nCheck with your provider data.</string>
+    <string name="no_location">Fail to intent location.\n Try again into a recognized urban zone.</string>
+    <string name="play_services_on">Google Services Disponible.</string>
+    <string name="error_google_services">You must have installed Google Play Store and Services.</string>
+    <string name="title_activity_pais">PaisActivity</string>
+    <string name="title_activity_estado">EstadoActivity</string>
+    <string name="title_activity_region_menu">RegionMenuActivity</string>
+    <string name="title_activity_finder">FinderActivity</string>
+    <string name="global">Nacional</string>
+	<string name="municipio">Municipio</string>
+	<string name="on_load_url_error">Failed to load resource.</string>
+	<string name="to_find">Type to search</string>
 </resources>
