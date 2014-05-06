@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class PDFViewerActivity extends Activity {
 	/*
 	 * Actividad que se ocupa de simular un navegador web simple.
+	 * Y renderizar documentos PDF
 	 * */
 	ProgressDialog progress;
 	

@@ -10,14 +10,15 @@ import android.widget.Toast;
 public class MyUtils {
 
 	public void parseJSON(Context context,String detalles){
-		try{/*Get and assing to Static Class DataHandler*/
+		try{
+			/*Se obtienen los datos de la case estatica DataHandler*/
 			JSONObject jObjDet = new JSONObject(detalles);
 			MCrypt mcrypt = new MCrypt();
 			//Log.d("ParseJSON", jObjDet.toString());
 			String result = jObjDet.getString("result").toString();
 			if(result.equals("OK")){ //validation result OK
-				//String doc1 = null;
-				try {//los primeros 10 son los documentos para el municipio detectado
+				
+				try {//los primeros 11 son los documentos para el municipio detectado
 					DataHandler.doc1 = new String(mcrypt.decrypt(jObjDet.getString("doc1").toString()));
 					DataHandler.doc2 = new String(mcrypt.decrypt(jObjDet.getString("doc2").toString()));
 					DataHandler.doc3 = new String(mcrypt.decrypt(jObjDet.getString("doc3").toString()));
@@ -151,7 +152,7 @@ public class MyUtils {
 					DataHandler.valles_centrales_doc11 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc11").toString()));
 					//DataHandler.url_state = new String(mcrypt.decrypt(jObjDet.getString("url_state").toString()));
 					
-					//DataHandler.municipio= new String(mcrypt.decrypt(jObjDet.getString("municipio").toString()));
+					DataHandler.municipio= new String(mcrypt.decrypt(jObjDet.getString("municipio").toString()));
 					DataHandler.region = new String(mcrypt.decrypt(jObjDet.getString("region")));
 					//this.setTitle(this.getTitle()+" - "+DataHandler.region);
 				} catch (Exception e) {
@@ -164,6 +165,10 @@ public class MyUtils {
 				Toast.makeText(context, jObjDet.getString("msg_error"), Toast.LENGTH_SHORT).show();
 			}
 			else{ 
+				/*
+				 * Si llegara a fallar en la obtención de datos se lanza la busqueda manual.
+				 * */
+				 
 				Toast.makeText(context, R.string.no_location, Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(context.getApplicationContext(),FinderActivity.class);
 				context.startActivity(intent);

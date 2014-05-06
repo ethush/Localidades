@@ -13,7 +13,9 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 
 public class MenuActivity extends Activity {
-	
+	/*
+	 * Se declara cada boton de evento por la animación 3D que se esta efectuando.
+	 * */
 	Button graf1, graf2, graf3, graf4, graf5, graf6, graf7, graf8, graf9, graf10, graf11, boton = null;
 	
 	@Override

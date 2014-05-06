@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,6 +38,7 @@ public class MainActivity extends Activity{
 	boolean back;
 	boolean isGPSenabled = false;
 
+	//Declaración de componente para renderizado de mapa
 	GoogleMap mapa;
 	
     LocationManager locacionMngr = null;
@@ -48,8 +48,13 @@ public class MainActivity extends Activity{
     //Variables para obtencion de informacion de la localidad 
     String localidad = "", vecindario = "";
     ProgressDialog pDialog;
-    Button btnmenu;
-    
+        
+    /*
+     * Timer instanciado a 10 segundos, en algunas ocasiones no se puede obtener la localidad de forma
+     * automatica en algunos puntos WIFI, para evitar que la aplicación llegue a congelarse el timer
+     * contabiliza el tiempo designado y en caso de que llegue al tiempo limite lanzara la busqueda manual
+     * de esta forma se controla el cuelgue temporal de la aplicación.
+     * */
     Timer timer = null;
     
 	@Override
@@ -57,14 +62,13 @@ public class MainActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        /*
+         * */
         
-        btnmenu = (Button)findViewById(R.id.showMenu);
-        btnmenu.setVisibility(View.GONE);
-        btnmenu.setVisibility(0);
         ConnectivityManager conMngr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		netInfo = conMngr.getActiveNetworkInfo();
 		
-		//Si es una red 3G usamos GPS
+		//Instanciamos el timer y la tarea de busqueda manual.
 		timer = new Timer();
 		TimerTask muestraFinder = new TimerTask() {
 			
@@ -75,7 +79,8 @@ public class MainActivity extends Activity{
 			}
 		};
 		timer.schedule(muestraFinder, 10000);
-		//Si existe una conexion 
+
+		//Si existe una conexion iniciamos los procedimientos necesarios para busqueda y renderizado del mapa. 
 		if(netInfo != null  && netInfo.isConnectedOrConnecting()) {
 			
 			locacionMngr = (LocationManager) getSystemService(Context.LOCATION_SERVICE); 
@@ -98,7 +103,6 @@ public class MainActivity extends Activity{
 				}
 				
 				else if(locacionMngr.isProviderEnabled(LocationManager.PASSIVE_PROVIDER)) {
-					
 					
 					LocationListener listener = new myLocListener();
 					locacionMngr.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, listener);
@@ -195,7 +199,10 @@ public class MainActivity extends Activity{
 		}
 
     }
-	
+	/*
+	 * Validación de doble pulsación en el boton "back" para cerrar la aplicación
+	 * y para evitar cierres accidentales.
+	 * */
 	@Override
 	public void onBackPressed() {
 		if(back){
@@ -212,6 +219,10 @@ public class MainActivity extends Activity{
 	
 	@Override
 	protected void onResume() {
+		/*
+		 * Si la aplicación detecta que el GPS esta apagado, y este se activa se reanuda la busqueda por GPS
+		 * la validación comprueba si el GPS esta activo para realizar funciones de geolocalización.
+		 * */
 		if(isGPSenabled){
 			super.onResume();
 			getPosicion();
@@ -231,13 +242,14 @@ public class MainActivity extends Activity{
 	}
 	 
 	/*
-	 * Funcion para mostrar la actividad de menu*/
+	 * Funcion para mostrar la actividad de menu para opciones de pais, estado, regiones*/
 	public void showMenu(View v){
 		Intent intent = new Intent(this,PoliticalMenuActivity.class);
 		startActivity(intent);
 		//overridePendingTransition(R.anim.efecto_1, R.anim.noeffect);
 	}
 	
+	/* Lanza la pantalla de datos especificos del municipio */
 	public void showMenuMunicipio(View v){
 		Intent intent = new Intent(this,MenuActivity.class);
 		startActivity(intent);
@@ -381,14 +393,19 @@ public class MainActivity extends Activity{
 				Toast.makeText(getApplicationContext(), "Sin Latitud" + e.getCause().toString(), Toast.LENGTH_SHORT).show();
 			}
 			
-			//Obtencion de datos de googleapis/maps
+			/*
+			 * Obtencion de datos de googleapis/maps en caso de no tener las variables
+			 * de latitud y longitud se inicia la pantalla para busqueda manual 
+			*/
 			try {
 				if (latitude == null && longitude == null) {
 					Toast.makeText(getApplicationContext(), R.string.no_position, Toast.LENGTH_LONG).show();
 					Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
 					startActivity(intent);
 				}
-				
+					/* Si se tienen las coordenadas se inicia el procedo de carga de datos y se detiene el timer
+					 * para evitar que se inicie la busqueda manual
+					 */
 					getLocalidad();
 					timer.cancel();
 				
@@ -421,7 +438,7 @@ public class MainActivity extends Activity{
 				ex.printStackTrace();
 				Log.e("Error render" , ex.toString());
 			}
-			//deshabilitamos la actualización de posición para evitar mayor consumo de datos al encontrar 
+			//deshabilitamos la actualización de posición para evitar mayor consumo de datos y bateria.
 			locacionMngr.removeUpdates(this);
 			//if(pDialog.isShowing()) pDialog.dismiss();
 		}

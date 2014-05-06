@@ -29,20 +29,32 @@ public class FinderActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_finder);
 		
+		/*
+		 * TextInput de busqueda
+		 * */
 		searchText = (EditText)findViewById(R.id.editText1);
+		
+		/*
+		 * ListView para listar los municipios
+		 * */
 		lista = (ListView)findViewById(R.id.lista);
-		//se hace la inclusion de <string-array> en el adaptador de datos
+		
+		/*
+		 * Se hace la inclusion de <string-array> en el adaptador de datos 
+		 */
 		adapter = new ArrayAdapter<String>(this,R.layout.list_item,R.id.product_name,getResources().getStringArray(R.array.municipios));
-		//se rellena el listview
+		/* Se rellena el listview */
 		lista.setAdapter(adapter);
-		//Seccion para extraer el valor de el item seleccionado 
+		/*
+		 * Declaración de eventos para obtener el municipio seleccionado y lanzar la pantalla de información
+		 * */ 
 		lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				
-				/* Obtenemos elobjeto que contiene el texto del item seleccionado y se asigna a DataHandler */ 
+				/* Obtenemos el objeto que contiene el texto del item seleccionado y se asigna a DataHandler */ 
 				Object item = lista.getItemAtPosition(arg2);
 				String municipio = item.toString();
 				//Log.e("valor",item.toString());
@@ -54,9 +66,9 @@ public class FinderActivity extends Activity {
 				getDetallesMunicipio detallesMunicipio = new getDetallesMunicipio();
 				detallesMunicipio.execute(municipio,"");
 				String detalles = null;
+				
 				/* Y obtenemos los datos */
 				try { 
-					
 					detalles = detallesMunicipio.get();
 					//Log.e("JSON original",detalles);
 				} catch (InterruptedException e) {		
@@ -64,16 +76,18 @@ public class FinderActivity extends Activity {
 				} catch (ExecutionException e) {
 					e.printStackTrace();
 				}
-				/* Con los datos los transformamos a json local y se reescribe la clase DataHandler*/
 				
+				/* Con los datos los transformamos a json local y se reescribe la clase DataHandler*/
 				MyUtils utils = new MyUtils();
 				utils.parseJSON(getApplicationContext(), detalles);
-				/* Lanzamos el menu para detalles de Municipio*/
+				
+				/* Lanzamos el menu para detalles de Municipio */
 				Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
 				startActivity(intent);
 			}
 			
 		});
+		
 		/* esta funcion detecta los cambios de texto y aplica un filtro en el adaptador
 		 * para actualizar la lista
 		 * */
@@ -81,7 +95,8 @@ public class FinderActivity extends Activity {
 			
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				adapter.getFilter().filter(s);
+				/* Realiza el filtro en el Listview desde el primer caracter escrito en el cuadro de texto*/
+				adapter.getFilter().filter(s); 
 			}
 			
 			@Override
