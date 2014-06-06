@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.digepo.localidades;
 
 import java.io.BufferedReader;
@@ -9,62 +12,99 @@ import java.net.URL;
 
 import android.os.AsyncTask;
 
+/**
+ * Clase: getDetallesMunicipio. Obtiene las rutas de datos del servidor en formato JSON plano para convertir en JSONObject.
+ * 
+ */
 public class getDetallesMunicipio extends AsyncTask<String, String, String>{
-	String data = null;
-	String req = null;
-	String xLocalidad="",xVecindario="";
 	
-	@Override //Obtenemos los datos de geolocalizacion proporcionados por la api de google en formato JSON
+	/** Variable para recibir la respuesta del servidor. */
+	String data = null;
+	
+	/** Variable para formar la URL de petición. */
+	String req = null;
+	
+	/** Variable para almacenar los valores encriptados de municipio. */
+	String xLocalidad="";
+
+	/** Variable para almacenar los valores encriptados de vecindario. */
+	String xVecindario="";
+	
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#doInBackground(Params[])
+	 */
+	/**
+	 * @param url String. Recibe los nombres de municipio y vecindario para codificar
+	 * @return data String. devuelve cadena JSON para convertir en JSONObject
+	 * 
+	 */
+	@Override 
 	protected String doInBackground(String... url) {
+		// Servidor de producción.
 		String _HOST = "http://www.gioax.com.mx";
-		//if uses android emulator also in ahrdware device
+		
+		//if uses android emulator also in hardware device
 		//String _HOST = "http://10.0.2.2/";
+		
 		//if uses Genymotion emulator
 		//String _HOST = "http://10.0.3.2/";
+		
 		String _ROOT = "digepo_SIG";
 		String _SCRIPT = "data.php";
-					
+
+		/** MCrypt mcrypt_a: Clase para codificación de valores. @see MCrypt */
 		MCrypt mcrypt_a = new MCrypt();
 		
-		//Proceso de encriptación  de parametros a enviar por la URL
-		try { //algunas localidades no tienen vecindario 
-			//if(!DataHandler.localidad.isEmpty())
-			if(!url[1].isEmpty())
+		/*
+		 * Encripta los valores a pasar por la URL, ocasionalmente los municipios solicitados no
+		 * son devueltos con vecindarios, en caso de venir vacios se les asigna el valor "Dalvik"
+		 * tambien es posible que el municipio esta vacío y ocurre la misma asignación, asi 
+		 * se previene una malformación de datos en la url o una petición errónea.
+		 */
+		try { 
+			if(!url[1].isEmpty()) {
 				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(url[1])));
-			else
+			}
+			else {
 				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		try{ //Valida entrada vacia
-			//if(!DataHandler.vecindario.isEmpty())
-			if(!url[0].isEmpty())
+		try{ 
+			if(!url[0].isEmpty()) {
 				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(url[0])));
-			else
+			}
+			else {
 				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
+			}
 		} catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		/*
-		 * Formamos la url y la procesamos en una peticion HTTPURLConnection*/
+		 * Se forma la URL con las variables codificadas antes de procesar la solicitud con la funcion getHTTPJSON
+		 */
 		req = _HOST + "/" + _ROOT + "/" + _SCRIPT + "?";
 		req +="localidad="+xLocalidad+"&vecindario="+xVecindario;
-		//Log.e("Datos Peticion",req);
 		
-		try { //Procesamos la peticion
+		
+		try { 
 			data = getHTTPJSON(req);
 		} catch (IOException e) {
 			e.printStackTrace();
-			//Log.d("Error de peticion", e.toString());
 		}
-		//Retornamos los valores ya que la funcion exige un retorno para ser tratado.
+		
 		return data;
 	}
-	/*
-	 * Función para reemplazar caracteres con acentos, el modulo MCrypt no soporta caracteres con acentos
-	 * por seguridad de codificación.
-	 * */
+	
+	/**
+	 * Sanitiza una cadena de texto que contenga acentos o tildes.
+	 *
+	 * @param  input String. Cadena a tratar 
+	 * @return output String. Cadena limpia
+	 */
 	private String sin_acentos(String input) {
 		String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
 	    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
@@ -77,41 +117,60 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 	    return output;
 	}
 	
-	private String getHTTPJSON(String strUrl) throws IOException{
-    	/*
-    	 * Variables para manejo y control de la peticion y respuesta*/
+	/**
+	 * Se obtiene JSON de los detalles del municipio.
+	 *
+	 * @param strUrl String. URL de petición de datos
+	 * @return String. Cadena JSON en formato plano para convertir a JSONObject
+	 * @throws IOException Alerta de I/O por si ocurre un error durante el proceso de petición.
+	 * @exception Exception Puede ocurrir si el servidor no esta disponible o no responde, fallas en la conexion, 
+	 *            o no se tiene conexión a internet.
+	 */
+	protected String getHTTPJSON(String strUrl) throws IOException{
+    	/**String data: Variable para almacenar la respuesta JSON en formato plano */
     	String data = "";
+    	
+    	/** HttpURLConnection urlconnection: Variable de tipo HttpURLConnection para hacer la petición */
     	HttpURLConnection urlconnection = null;
+    	
+    	/** InputStream inputStream: Variable para almacenar la respuesta del servidor */
     	InputStream inputStream = null;
+    	
+    	/** BufferedReader br: Variable para almacenar y tratar la respuesta.*/
 		BufferedReader br = null;
+		
 		try {
-			//Encapsulamos la peticion y asi controlar las excepciones de malformacion de datos o de respuesta.
+			/* Creamos la conexión y se ejecuta la petición */
 			URL url = new URL(strUrl);
 			urlconnection = (HttpURLConnection)url.openConnection();
 			urlconnection.connect();
-			//Si ha sifo exitoso recolectamos la informacion en un stream generico
+						
 			inputStream = urlconnection.getInputStream();
-			//y lo pasamos a un buffer de lectura por lineas
+			
+			/* Se tratan los datos devueltos y se traducen a String. */
 			br = new BufferedReader(new InputStreamReader(inputStream));
+			
 			StringBuffer sb = new StringBuffer();
 			String linea = "";
-			//Leemos la respuesta
-			while((linea = br.readLine()) != null){
+			
+			while((linea = br.readLine()) != null) {
 				sb.append(linea + "\n");
 			}
-			//Transformamos los datos a formato String
+						
 			br.close();
+			
+			/* Hecho el tratamiento se almacena en una variable de tipo String. */
 			data = sb.toString();
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
-			//Log.d("Error getInfo", ex.toString());
 		}
-		finally{ //Cerramos y liberamos las conexiones y buffer de lectura.
+		finally{ 
+			/* Cerramos las conexiones. */
 			inputStream.close();
 			urlconnection.disconnect();
 		}
-    	//Retornamos el valor
+    	
 		return data;
     }
 }

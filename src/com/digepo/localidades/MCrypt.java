@@ -6,6 +6,7 @@ import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+// TODO: Auto-generated Javadoc
 /*
  * Clase usada para encriptar los valores devueltos por googleapis y para el proceso inverso 
  * al momento de obtener los datos solicitados remotamente.
@@ -18,17 +19,31 @@ import javax.crypto.spec.SecretKeySpec;
  * MCrypt mcrypt = new MCrypt();
  * String decrypt =  new String(mcrypt.decrypt(<encrypt>);
  * */
+
+/**
+ * Clase MCrypt. Es utilizada para codificar y decodificar bajo un esquema de 1024bits con AES
+ */
 public class MCrypt {
 
         //private String iv = "fedcba9876543210";
+        /** Clave de codificación. */
         private String iv = "pr0y3ct0d1g3p0iv"; //Secret KEY
+        
+        /** Parametro ivspec. */
         private IvParameterSpec ivspec;
+        
+        /** Parametro keyspec. */
         private SecretKeySpec keyspec;
+        
         private Cipher cipher;
         
         //private String SecretKey = "0123456789abcdef";
+        /** clave secreta. */
         private String SecretKey = "pr0y3ct0d1g3p0ky"; //Secret KEY
         
+        /**
+         * Crea un objeto de tipo MCrypt
+         */
         public MCrypt()
         {
                 ivspec = new IvParameterSpec(iv.getBytes());
@@ -38,10 +53,8 @@ public class MCrypt {
                 try {
                         cipher = Cipher.getInstance("AES/CBC/NoPadding");
                 } catch (NoSuchAlgorithmException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                 } catch (NoSuchPaddingException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                 }
         }
@@ -83,8 +96,6 @@ public class MCrypt {
                 return decrypted;
         }
         
-
-        
         public static String bytesToHex(byte[] data)
         {
                 if (data==null)
@@ -103,7 +114,8 @@ public class MCrypt {
                 return str;
         }
  
-        public static byte[] hexToBytes(String str) {
+        public static byte[] hexToBytes(String str) 
+        {
                 if (str==null) {
                         return null;
                 } else if (str.length() < 2) {
@@ -118,7 +130,7 @@ public class MCrypt {
                 }
         }
  
-        private static String padString(String source)
+        private static String padString(String source) 
         {
           char paddingChar = ' ';
           int size = 16;

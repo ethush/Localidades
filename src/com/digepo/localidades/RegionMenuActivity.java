@@ -6,24 +6,47 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 
+/**
+ * Clase RegionMenuActivity. Menu de rubros por region.
+ */
 public class RegionMenuActivity extends Activity {
 
+	/** Variable para obtener la region que se ha seleccionado. */
 	static int my_region = 0;
-	Button graf1, graf2, graf3, graf4, graf5, graf6, graf7, graf8, graf9, graf10, graf11, boton = null;
+	
+	/**
+	 * Botones graf* son usados para controlar la animacion de 
+	 * forma individual y lanzar las pantallas de información showGraf*() . 
+	 * */
+	Button graf1;
+	Button graf2;
+	Button graf3;
+	Button graf4;
+	Button graf5;
+	Button graf6;
+	Button graf7;
+	Button graf8;
+	Button graf9;
+	Button graf10;
+	Button graf11;
+	Button boton = null;
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_region_menu);
 
-		
+		/* Botones Graf* Se obtienen las instancias de botones declaradas en la interfaz XML. */
 		graf1 = (Button)findViewById(R.id.graf1);
 		graf2 = (Button)findViewById(R.id.graf2);
 		graf3 = (Button)findViewById(R.id.graf3);
@@ -36,14 +59,22 @@ public class RegionMenuActivity extends Activity {
 		graf10 = (Button)findViewById(R.id.graf10);
 		graf11 = (Button)findViewById(R.id.graf11);
 		
+		/*
+		 * Se declara el evento setOnClickListener para cada boton,
+		 * de esta forma se agrega el efecto de giro 3D proporcionado 
+		 * por la clase Flip3dAnimation y lanzar las pantallas de los
+		 * indicadores al finalizar la animación.
+		 * */
 		graf1.setOnClickListener(new Button.OnClickListener() {
 			
 			@Override
 			public void onClick(final View arg0) {
 				
+				/* Se obtiene el alto y ancho del control. */
 				float centerX = graf1.getWidth() / 2.0f;
 				float centerY = graf1.getHeight() / 2.0f;
 				
+				/* Crea una instancia de tipo Flip3dAnimation, se declara el tipo de movimiento y duración. */
 				Flip3dAnimation animador = new Flip3dAnimation(0, 180, centerX, centerY);
 				
 				animador.setDuration(500);
@@ -51,7 +82,15 @@ public class RegionMenuActivity extends Activity {
 								
 				animador.setInterpolator(new AccelerateInterpolator());
 				
+				/* Inicia la animación. */
 				arg0.startAnimation(animador);
+				
+				/* 
+				 * Se inicia un timer calculado en el mismo tiempo para iniciar la aplicación,
+				 * si no esta presente el efecto no sera visualizado. En el metodo run()
+				 * se asigna el boton que fue presionado, al momento de que se presione "back"
+				 * se realice la animación contraria y restaurarlo a su posición inicial.
+				 * */
 				Timer t = new Timer();
 				TimerTask tTask = new TimerTask() {
 					
@@ -377,15 +416,17 @@ public class RegionMenuActivity extends Activity {
 				}
 			});
 			
-			
+		/* Obtiene la region del menu RegionActivity. */	
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			my_region = extras.getInt("region");
 		}
-		
-		Log.d("Region", String.valueOf(my_region));
+		//Log.d("Region", String.valueOf(my_region));
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -393,6 +434,9 @@ public class RegionMenuActivity extends Activity {
 		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
@@ -400,10 +444,18 @@ public class RegionMenuActivity extends Activity {
 		overridePendingTransition(0, R.anim.efecto_salida_1);
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(boton!=null){//Retorna el boton a su estado inicial con un efecto inverso
+		/**
+		 * Cuando se inicia una actividad de indicadores se guarda el estado
+		 * del boton, cuando el usuario presiona "back" se hace el efecto inverso 
+		 * para restaurar el boton a su posicion original.
+		 * */
+		if(boton!=null) {
 			float centerX = boton.getWidth() / 2.0f;
 			float centerY = boton.getHeight() / 2.0f;
 			
@@ -419,11 +471,33 @@ public class RegionMenuActivity extends Activity {
 		}
 	}
 	
+	/**
+	 * Obtiene la URL de la region que se ha seleccionado de la clase DataHandler. 
+	 * Las rutas estan definidas por region y rubro, la variable obtiene 
+	 * el numero de region y el rubro se asigna de acuerdo al boton seleccionado
+	 * @see DataHandler
+	 * 
+	 * @param region Integer. Numero de region enviado desde RegionActivity
+	 * @param grafico Integer. Numero de rubro que se ha seleccionado.
+	 * @return URL String. Ruta de datos.
+	 */
 	public String get_url(int region, int grafico){
+		
+		/* Se obtiene el numero de region y se parsea a String. */
 		String _region = String.valueOf(region);
+		
+		/* Se obtiene el numero de documento y se parsea a String. */
 		String _grafico = String.valueOf(grafico);
+		
+		/* Variable para almacenar la URL que se obtiene de la clase DataHandler. */
 		String url = "";
+		
+		/* 
+		 * Variable que concatena los valores de region y grafico para que se compare 
+		 * en el selector de casos. 
+		 * */
 		int valor = Integer.parseInt(_region + _grafico);
+		
 		switch (valor) {
 		case 11:
 			url = DataHandler.canada_doc1;
@@ -692,45 +766,116 @@ public class RegionMenuActivity extends Activity {
 		default:
 			break;
 		}
+		
 		return url;
 	}
 
-	public void showGraf1 (View v){
+	/**
+	 * Muestra rubro Población.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf1 (View v) {
 		startMyActivity(get_url(my_region,1));
 	}
-	public void showGraf2 (View v){
+	
+	/**
+	 * Muestra rubro Vivienda.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf2 (View v) {
 		startMyActivity(get_url(my_region,2));
 	}
-	public void showGraf3 (View v){
+	
+	/**
+	 * Muestra rubro Fecundidad y mortalidad.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf3 (View v) {
 		startMyActivity(get_url(my_region,3));
 	}
-	public void showGraf4 (View v){
+	
+	/**
+	 * Muestra rubro Educación.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf4 (View v) {
 		startMyActivity(get_url(my_region,4));
 	}
-	public void showGraf5 (View v){
+	
+	/**
+	 * Muestra rubro Economía.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf5 (View v) {
 		startMyActivity(get_url(my_region,5));
 	}
-	public void showGraf6 (View v){
+	
+	/**
+	 * Muestra rubro Situación Conyugal.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf6 (View v) {
 		startMyActivity(get_url(my_region,6));
 	}
-	public void showGraf7 (View v){
+	
+	/**
+	 * Muestra rubro Limitaciones físicas o mentales.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf7 (View v) {
 		startMyActivity(get_url(my_region,7));
 	}
-	public void showGraf8 (View v){
+	
+	/**
+	 * Muestra rubro Salud.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf8 (View v) {
 		startMyActivity(get_url(my_region,8));
 	}
-	public void showGraf9 (View v){
+	
+	/**
+	 * Muestra rubro Religión.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf9 (View v) {
 		startMyActivity(get_url(my_region,9));
 	}
-	public void showGraf10 (View v){
+	
+	/**
+	 * Muestra rubro Lengua indigena.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf10 (View v) {
 		startMyActivity(get_url(my_region,10));
 	}
-	public void showGraf11 (View v){
+	
+	/**
+	 * Muestra rubro Migración.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf11 (View v) {
 		startMyActivity(get_url(my_region,11));
 	}
 	
-	public void startMyActivity(String url){
-		Log.d("nomenclatura", url);
+	/**
+	 * Inicia la pantalla PDFViewer con la url del rubro.
+	 *
+	 * @param url String. URL de datos adquirida de get_url()
+	 */
+	public void startMyActivity(String url) {
+		
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", url);
 		startActivity(intent);

@@ -10,13 +10,20 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+/**
+ * Clase PDFViewerActivity. Pantalla para visualizar documentos PDF mediante el visor de Google
+ */
 public class PDFViewerActivity extends Activity {
 	/*
 	 * Actividad que se ocupa de simular un navegador web simple.
 	 * Y renderizar documentos PDF
 	 * */
+	/** Dialogo de progreso mientras se carga el documento PDF. */
 	ProgressDialog progress;
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +31,19 @@ public class PDFViewerActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_pdfviewer);
 		
+		/* Variable para almacenar la URL enviada */
 		String myurl = null;
-		// Obtenemos la url que es manejada por la clase estatica DataHandler
+		
+		/* Obtenemos la url que es manejada por la clase estatica DataHandler. */
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			myurl = extras.getString("url");
 		}
-		//Log.e("Ruta PDF",myurl);
-		//Iniciamos un popup de carga
+		
+		/* Antes de iniciar la petición al servidor mostramos un popup de progreso. */
 		progress = ProgressDialog.show(this, "Cargando PDF.", "Por favor, espere.");
-		//Instanciamos el visor web y se habilita javascript, es requerido por el visor de google docs
+		
+		/* Instanciamos el visor web y se habilita javascript, es requerido por el visor de google docs. */
 		WebView web = (WebView) findViewById(R.id.webView);
 		web.getSettings().setJavaScriptEnabled(true); 
 		web.getSettings().setUseWideViewPort(true);
@@ -48,13 +58,16 @@ public class PDFViewerActivity extends Activity {
             }
             @Override
             public void onPageFinished(WebView view, final String url) {
-            	 if(progress.isShowing()){
-                 	progress.dismiss(); //si ha terminado la carga, deshabilitamos el popup de información
+            	
+            	/* Terminada la carga del documento, deshabilitamos el popup de información. */
+            	if(progress.isShowing()){
+                 	progress.dismiss(); 
                  }
             }
             
 		});
-		//y cargamos la url
+		
+		/* Seteamos la URL que se va a mostrar, en caso contrario mostramos un mensaje de error.*/
 		if(!myurl.isEmpty()){
 			web.loadUrl(myurl);
 		}
@@ -67,6 +80,9 @@ public class PDFViewerActivity extends Activity {
 			
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -74,6 +90,9 @@ public class PDFViewerActivity extends Activity {
 		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub

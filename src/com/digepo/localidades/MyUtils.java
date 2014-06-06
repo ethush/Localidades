@@ -4,17 +4,32 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.widget.Toast;
 
+
+/**
+ * Class MyUtils. Asigna y trata la información recuperada del servidor de datos a la clase DataHandler.
+ */
 public class MyUtils {
 
-	public void parseJSON(Context context,String detalles){
-		try{
-			/*Se obtienen los datos de la case estatica DataHandler*/
+	/**
+	 * Parsea  y asigna los datos a la clase DataHandler.
+	 *
+	 * @param context Context. usese getApplicationContext()
+	 * @param detalles String. JSON plano proveniente de la consulta al servidor.
+	 * @exception Exception. Ocasionado por valores vacios dentro de un valor o jObjDet esta mal formado.
+	 */
+	public void parseJSON(Context context,String detalles) {
+		
+		try {
+			/** JSONOBJECT jObjDet: Variable para traducir el formado plano a un JSONObject. */
 			JSONObject jObjDet = new JSONObject(detalles);
+			
+			/** MCrypt mcrypt: Clase para descrifrar el contenido de valores. */
 			MCrypt mcrypt = new MCrypt();
 			//Log.d("ParseJSON", jObjDet.toString());
+			
+			
 			String result = jObjDet.getString("result").toString();
 			if(result.equals("OK")){ //validation result OK
 				
@@ -150,34 +165,21 @@ public class MyUtils {
 					DataHandler.valles_centrales_doc9 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc9").toString()));
 					DataHandler.valles_centrales_doc10 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc10").toString()));
 					DataHandler.valles_centrales_doc11 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc11").toString()));
-					//DataHandler.url_state = new String(mcrypt.decrypt(jObjDet.getString("url_state").toString()));
-					
+										
 					DataHandler.municipio= new String(mcrypt.decrypt(jObjDet.getString("municipio").toString()));
 					DataHandler.region = new String(mcrypt.decrypt(jObjDet.getString("region")));
-					//this.setTitle(this.getTitle()+" - "+DataHandler.region);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 					//Log.e("Error decrypt",e.getMessage());
 				}
-				//Log.e("IN DATAhANDLER",DataHandler.doc1);
 			}
-			else if(result.equals("ERROR")){
+			else if(result.equals("ERROR")) {
 				Toast.makeText(context, jObjDet.getString("msg_error"), Toast.LENGTH_SHORT).show();
-			}
-			else{ 
-				/*
-				 * Si llegara a fallar en la obtención de datos se lanza la busqueda manual.
-				 * */
-				 
-				Toast.makeText(context, R.string.no_location, Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(context.getApplicationContext(),FinderActivity.class);
-				context.startActivity(intent);
-			}
-				
+			}	
 		}
 		catch(JSONException ex){
 			ex.printStackTrace();
-			//Log.d("JSON Exception Municipio", ex.toString());
 		}
 	}
 }

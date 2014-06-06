@@ -1,8 +1,6 @@
 package com.digepo.localidades;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
 import org.json.JSONArray;
@@ -33,61 +31,56 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import android.widget.TextView;
 
+/**
+ * Class MainActivity.
+ */
 public class MainActivity extends Activity{
-	//declaraciones de mapas y posicionamiento
+
+	/* The back. */
 	boolean back;
+	
+	/* The is gp senabled. */
 	boolean isGPSenabled = false;
 
-	//Declaración de componente para renderizado de mapa
+	/* The mapa. */
 	GoogleMap mapa;
 	
+    /* The locacion mngr. */
     LocationManager locacionMngr = null;
-    NetworkInfo netInfo = null;
-    //coordenadas y cariable de posicion para mapa
-    Double latitude, longitude;
-    //Variables para obtencion de informacion de la localidad 
-    String localidad = "", vecindario = "";
-    ProgressDialog pDialog;
-        
-    /*
-     * Timer instanciado a 10 segundos, en algunas ocasiones no se puede obtener la localidad de forma
-     * automatica en algunos puntos WIFI, para evitar que la aplicación llegue a congelarse el timer
-     * contabiliza el tiempo designado y en caso de que llegue al tiempo limite lanzara la busqueda manual
-     * de esta forma se controla el cuelgue temporal de la aplicación.
-     * */
-    Timer timer = null;
     
+    /* The net info. */
+    NetworkInfo netInfo = null;
+    
+    /* The longitude. */
+    Double latitude , longitude;
+    
+    /* The vecindario. */
+    String localidad = "", vecindario = "";
+    
+    /* The p dialog. */
+    ProgressDialog pDialog;
+    
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
         /*
+         * Aquiere los recursos para localizacion y de red
          * */
-        
         ConnectivityManager conMngr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		netInfo = conMngr.getActiveNetworkInfo();
+		locacionMngr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		
-		//Instanciamos el timer y la tarea de busqueda manual.
-		timer = new Timer();
-		TimerTask muestraFinder = new TimerTask() {
-			
-			@Override
-			public void run() {
-				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
-				startActivity(intent);
-			}
-		};
-		timer.schedule(muestraFinder, 10000);
-
-		//Si existe una conexion iniciamos los procedimientos necesarios para busqueda y renderizado del mapa. 
+		/* Si existe una conexion iniciamos los procedimientos necesarios para busqueda y renderizado del mapa. */ 
 		if(netInfo != null  && netInfo.isConnectedOrConnecting()) {
-			
-			locacionMngr = (LocationManager) getSystemService(Context.LOCATION_SERVICE); 
 			
 			if(netInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
 				Toast.makeText(this, "Usando 3G - GPS", Toast.LENGTH_SHORT).show();
-				
+				Log.d("CONEXION", "POR GPS");
 				if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 					
 					LocationListener listener = new myLocListener();
@@ -95,20 +88,8 @@ public class MainActivity extends Activity{
 					locacionMngr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 				} 
 				
-				else if(locacionMngr.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {	
-					
-					LocationListener listener = new myLocListener();
-					locacionMngr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
-					locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-				}
-				
-				else if(locacionMngr.isProviderEnabled(LocationManager.PASSIVE_PROVIDER)) {
-					
-					LocationListener listener = new myLocListener();
-					locacionMngr.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, listener);
-				}
-				
-				else{ //Validamos los mensajes en caso de que el GPS este apagado
+				else{ 
+					/** Validamos los mensajes en caso de que el GPS este apagado. */
 					Toast.makeText(this, R.string.no_gps, Toast.LENGTH_SHORT).show();
 					AlertDialog.Builder alert = new AlertDialog.Builder(this);
 					alert.setMessage(R.string.no_gps_alert)
@@ -131,67 +112,34 @@ public class MainActivity extends Activity{
 							startActivity(intent);
 						}
 					});
-					//En caso de estar apagado mostramos un mensaje de invitación para encenderlo
+					/* En caso de estar apagado mostramos un mensaje de invitación para encenderlo */
 					AlertDialog popup = alert.create();
 					popup.show();
 					
 				}
 			}
-			//Si es una red WIFI intentamos acceder a la ubicación por medio de IP
-			if(netInfo.getType() == ConnectivityManager.TYPE_WIFI){
+			/* Si es una red WIFI intentamos acceder a la ubicación por medio de IP */
+			else if(netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
 				Toast.makeText(this, "Usando WIFI", Toast.LENGTH_SHORT).show();
-			
-				if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-					
-					LocationListener listener = new myLocListener();
-					Toast.makeText(this, "usando GPS", Toast.LENGTH_SHORT).show();
-					locacionMngr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);	
-					locacionMngr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-				}
+				//Log.d("CONEXION", "POR WIFI");
 				
-				else if(locacionMngr.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-					
-					Toast.makeText(this, "usando WIFI", Toast.LENGTH_SHORT).show();
-					LocationListener listener = new myLocListener();
-					locacionMngr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
-					locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-				}
+				 if(locacionMngr.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 				
-				else if(locacionMngr.isProviderEnabled(LocationManager.PASSIVE_PROVIDER)) {
-					
-					LocationListener listener = new myLocListener();
-					locacionMngr.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, listener);
+					 if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+							
+							LocationListener listener = new myLocListener();
+							locacionMngr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);	
+							locacionMngr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					 }
+					 else {
+							LocationListener listener = new myLocListener();
+							locacionMngr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 200, listener);
+							locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					 }
 				}
-				
-				else{ //Validamos los mensajes en caso de que el GPS este apagado
-					Toast.makeText(this, R.string.no_gps, Toast.LENGTH_SHORT).show();
-					AlertDialog.Builder alert = new AlertDialog.Builder(this);
-					alert.setMessage(R.string.no_gps_alert)
-					.setCancelable(false)
-					.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-							isGPSenabled = true;
-						}
-						
-					})
-					.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.cancel();
-							Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
-							startActivity(intent);
-						}
-					});
-					//En caso de estar apagado mostramos un mensaje de invitación para encenderlo
-					AlertDialog popup = alert.create();
-					popup.show();
-					
-				}
-	
+				 else {
+					 Log.e("error", "error en wifi");
+				 }
 			}
 		}
 		else{
@@ -203,6 +151,9 @@ public class MainActivity extends Activity{
 	 * Validación de doble pulsación en el boton "back" para cerrar la aplicación
 	 * y para evitar cierres accidentales.
 	 * */
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
 	@Override
 	public void onBackPressed() {
 		if(back){
@@ -217,6 +168,9 @@ public class MainActivity extends Activity{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		/*
@@ -235,21 +189,33 @@ public class MainActivity extends Activity{
 		}
 	}
 	
-	 @Override
+	 /* (non-Javadoc)
+ 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+ 	 */
+ 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    getMenuInflater().inflate(R.menu.main, menu);
 	    return false;
 	}
 	 
-	/*
-	 * Funcion para mostrar la actividad de menu para opciones de pais, estado, regiones*/
+	
+	/**
+	 * Muestra el menu politico: Pais, estado, regiones y buscador de municipios.
+	 *
+	 * @param v the v
+	 */
 	public void showMenu(View v){
 		Intent intent = new Intent(this,PoliticalMenuActivity.class);
 		startActivity(intent);
 		//overridePendingTransition(R.anim.efecto_1, R.anim.noeffect);
 	}
 	
-	/* Lanza la pantalla de datos especificos del municipio */
+	
+	/**
+	 * Muestra el menu municipio.
+	 *
+	 * @param v Requerido para el contexto de la aplicacion
+	 */
 	public void showMenuMunicipio(View v){
 		Intent intent = new Intent(this,MenuActivity.class);
 		startActivity(intent);
@@ -257,13 +223,15 @@ public class MainActivity extends Activity{
 	}
 	
 	
-	/*
-	 * Funcion para obtener latitud y longitud
-	 * */
+	
+	/**
+	 * Obtiene la posición geografica ya sea por GPS o WIFI al momento de reiniciar la pantalla.
+	 *
+	 * @return void.
+	 */
 	public void getPosicion(){
-		//locacionMngr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
-		//Si es una red 3G usamos GPS
+				
+		/** Si esta usando red movil se usa GPS. */
 		if(netInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
 			Toast.makeText(this, "Usando 3G - GPS", Toast.LENGTH_SHORT).show();
 			
@@ -274,21 +242,7 @@ public class MainActivity extends Activity{
 				locacionMngr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 			} 
 			
-			else if(locacionMngr.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {	
-				
-				LocationListener listener = new myLocListener();
-				locacionMngr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
-				locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-			}
-			
-			else if(locacionMngr.isProviderEnabled(LocationManager.PASSIVE_PROVIDER)) {
-				
-				LocationListener listener = new myLocListener();
-				locacionMngr.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, listener);
-				locacionMngr.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-			}
-			
-			else{ //Validamos los mensajes en caso de que el GPS este apagado
+			else { //Validamos los mensajes en caso de que el GPS este apagado
 				Toast.makeText(this, R.string.no_gps, Toast.LENGTH_SHORT).show();
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
 				alert.setMessage(R.string.no_gps_alert)
@@ -311,116 +265,91 @@ public class MainActivity extends Activity{
 						startActivity(intent);
 					}
 				});
-				//En caso de estar apagado mostramos un mensaje de invitación para encenderlo
+				
 				AlertDialog popup = alert.create();
 				popup.show();
 				
 			}
 		}
-		//Si es una red WIFI intentamos acceder a la ubicación por medio de IP
+		
 		if(netInfo.getType() == ConnectivityManager.TYPE_WIFI){
 			Toast.makeText(this, "Usando WIFI", Toast.LENGTH_SHORT).show();
-		
-			if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-				
-				LocationListener listener = new myLocListener();
-				locacionMngr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);	
-				locacionMngr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-			}
+		/*
 			
-			else if(locacionMngr.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-				
-				LocationListener listener = new myLocListener();
-				locacionMngr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
-				locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-			}
-			
-			else if(locacionMngr.isProviderEnabled(LocationManager.PASSIVE_PROVIDER)) {
-				
-				LocationListener listener = new myLocListener();
-				locacionMngr.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, listener);
-				locacionMngr.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-			}
-			
-			else{ //Validamos los mensajes en caso de que el GPS este apagado
-				Toast.makeText(this, R.string.no_gps, Toast.LENGTH_SHORT).show();
-				AlertDialog.Builder alert = new AlertDialog.Builder(this);
-				alert.setMessage(R.string.no_gps_alert)
-				.setCancelable(false)
-				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+			*/
+			if(locacionMngr.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+				if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-						isGPSenabled = true;
-					}
-					
-				})
-				.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-						Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
-						startActivity(intent);
-					}
-				});
-				//En caso de estar apagado mostramos un mensaje de invitación para encenderlo
-				AlertDialog popup = alert.create();
-				popup.show();
-				
+					LocationListener listener = new myLocListener();
+					locacionMngr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);	
+					locacionMngr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+				}
+				else {
+					LocationListener listener = new myLocListener();
+					locacionMngr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 200, listener);
+					locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+				}
 			}
-
-		}
+		}		
 	}
 	
+	/**
+	 * Interface creada para manipular eventos de la clase LocationListener .
+	 * 
+	 * Clase hecha para controlar eventos y registros de localización
+	 * GPS ó WIFI, esta registra los componentes usados por LocationListener
+	 * Cuando un evento de localización ocurre se inicia la funcion apropiada
+	 * @see LocationListener
+	 */
 	private class myLocListener implements LocationListener {
+		/* Valida si se tienen las coordenadas para no volverlas a solicitar. */
+		Boolean LatLongAcq = false;
+		Integer intentos = 0;
+		
+		/* (non-Javadoc)
+		 * @see android.location.LocationListener#onLocationChanged(android.location.Location)
+		 */
 		@Override
 		public void onLocationChanged(Location location) {
 			
+			/* Variable usada para almacenar geoposicionamiento y usarlo para el componente GoogleMaps */
 			LatLng posicion = null;
-			//variales a usar para la obtencion de datos de geolocalización.
+			
 			try {
 				latitude = location.getLatitude();
 				longitude = location.getLongitude();
 				
-				DataHandler.latitude = latitude;
-				DataHandler.longitude = longitude;
+				if(latitude !=null && longitude !=null) {
+					LatLongAcq = true;
+					//Toast.makeText(getApplicationContext(), latitude +" --- "+ longitude, Toast.LENGTH_SHORT).show();
+					DataHandler.latitude = latitude;
+					DataHandler.longitude = longitude;
 				
-				posicion = new LatLng(latitude, longitude);
+					posicion = new LatLng(latitude, longitude);
+					
+					/* Cancela las peticiones y libera la variable. */
+					locacionMngr.removeUpdates(this);
+					locacionMngr = null;
+				}
+				else {
+					intentos++;
+					//Log.d("Intentos", "Intentos: "+intentos.toString());
+					if(intentos==10){
+						Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
+						startActivity(intent);
+					}
+				}
 			}
 			catch (Exception e) {
-				Toast.makeText(getApplicationContext(), "Sin Latitud" + e.getCause().toString(), Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir una ubicación." + e.getCause().toString(), Toast.LENGTH_SHORT).show();
 			}
 			
-			/*
-			 * Obtencion de datos de googleapis/maps en caso de no tener las variables
-			 * de latitud y longitud se inicia la pantalla para busqueda manual 
-			*/
-			try {
-				if (latitude == null && longitude == null) {
-					Toast.makeText(getApplicationContext(), R.string.no_position, Toast.LENGTH_LONG).show();
-					Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
-					startActivity(intent);
-				}
-					/* Si se tienen las coordenadas se inicia el procedo de carga de datos y se detiene el timer
-					 * para evitar que se inicie la busqueda manual
-					 */
-					getLocalidad();
-					timer.cancel();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			//obtenemos e inicializamos el mapa
+			/* Se renderiza el mapa. */
 			try{
-				if(mapa==null) {
+				if(mapa==null && LatLongAcq) {
 					mapa = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapa)).getMap();
 					
-					if(mapa!=null){
-						//mapa.setMyLocationEnabled(true);
-						
+					if(mapa!=null) {
 						//posicionamos la camara del mapa
 						mapa.moveCamera(CameraUpdateFactory.newLatLng(posicion));
 						CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -430,90 +359,129 @@ public class MainActivity extends Activity{
 						.build();
 						//efecto de zoom si la version de android la soporta.
 						mapa.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-						
 					}
 				}
 			}
 			catch(Exception ex){
 				ex.printStackTrace();
-				Log.e("Error render" , ex.toString());
+				Log.e("Error al renderizar mapa." , ex.toString());
 			}
-			//deshabilitamos la actualización de posición para evitar mayor consumo de datos y bateria.
-			locacionMngr.removeUpdates(this);
-			//if(pDialog.isShowing()) pDialog.dismiss();
+			
+			try {
+				if(LatLongAcq) {
+					/*
+					 * Obtencion de datos de googleapis/maps en caso de no tener las variables
+					 * de latitud y longitud se inicia la pantalla para busqueda manual.
+					 * */
+					
+					getLocalidad();
+					
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			/* Deshabilitamos la actualización de posición para evitar mayor consumo de datos y bateria. */
+			
+			
 		}
 
+		/* (non-Javadoc)
+		 * @see android.location.LocationListener#onProviderDisabled(java.lang.String)
+		 */
 		@Override
 		public void onProviderDisabled(String provider) {}
 
+		/* (non-Javadoc)
+		 * @see android.location.LocationListener#onProviderEnabled(java.lang.String)
+		 */
 		@Override
 		public void onProviderEnabled(String provider) {}
 
+		/* (non-Javadoc)
+		 * @see android.location.LocationListener#onStatusChanged(java.lang.String, int, android.os.Bundle)
+		 */
 		@Override
 		public void onStatusChanged(String provider, int status, Bundle extras) {}
 	} //end myLocListener
 	
-	/*
-	 * Funcion para obtener el nombre de la localidad*/
+	
+	/**
+	 * Obtiene el nombre de la localidad usando GoogleApis para geocode.
+	 *
+	 * @return void
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void getLocalidad() throws IOException {
 		
+		/* Control para mostrar el vecindario o colonia en la que se encuentra. */
 		TextView nomLocalidad;
 		
-		//Generamos una asynctask 
-		getNombre peticion = new getNombre();
-		//y la ejecutamos
-		peticion.execute(latitude.toString(),longitude.toString());
+		/* Variable para almacenar el resultado en JSON devuelto por la clase getNombre*/
 		String data = null;
-		try { //Se realiza una funcion asincrona para peticion de datos http por restricciones de threads en ejecucion de la aplicacion
+		
+		/* Se instancia una clase derivada de AsyncTask para obtener el nombre de la localidad. */
+		getNombre peticion = new getNombre();
+		peticion.execute(latitude.toString(),longitude.toString());
+				
+		
+		try { 
 			data = peticion.get();
-			//Log.e("Respuesta completa", data);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		try{
-			/*tras obtener los datos los convertimos en un objeto JSon para su tratamiento*/
-			JSONObject jObj = new JSONObject(data.toString());
-			/* Obtenemos la coleccion de valores de las direcciones para averiguar el nombre de la localidad o municipio y cotejarlas 
-			 * en la base de datos en un servidor */
-			JSONArray array = ((JSONArray)jObj.getJSONArray("results").getJSONObject(0).getJSONArray("address_components"));
-			/*
-			 * Proceso de busqueda en el arreglo addres_components para buscar la informacion relacionana al nombre de la localidad
-			 * en dos campos de nombre locality o neighborhood y en algunos casos de centro del estado administrative_area_level_1(pendiente)
-			 * */
+		
+		/*
+		 * Con el JSON en texto plano se convierte a JSONObject para tratamiento adecuado,
+		 * de la seccion [results] -> [address_components] se extraen los valores de los
+		 * campos "neighborhood" y "locality", estos se usan para hacer la peticion al
+		 * servidor remoto y obtener una ruta de datos correspondientes al municipio. 
+		 * */
+		try {
 			
+			JSONObject jObj = new JSONObject(data.toString());
+			
+			/* Se obtiene la coleccion de valores para extraer el nombre de la localidad y la colonia o vecindario. */
+			JSONArray array = ((JSONArray)jObj.getJSONArray("results").getJSONObject(0).getJSONArray("address_components"));
+			
+			/* Se hace uso de la funcion getLocalidades para buscar de forma dinamica los nombres.*/
 			vecindario = getLocalidades(array,"neighborhood");
 			localidad = getLocalidades(array,"locality");
 			
-			/*Validacion en caso que no se encuentre una localidad o vecindario se lanza la busqueda manual*/
+			/* Si las variables resultaran vacías se inicia una busqueda manual.*/
 			Log.d("Valores", localidad + " - " + vecindario);
-			if(vecindario.isEmpty() && localidad.isEmpty())
-			{
-				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir un municipio. \n Intente de forma manual", Toast.LENGTH_SHORT).show();
+			if(vecindario.isEmpty() && localidad.isEmpty())	{
+				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir información del municipio.", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
 				startActivity(intent);
 			}
-			/*
-			 * Agrega el nombre de la localidad en la cabecera del mapa
-			 * 
-			 * */
-			this.setTitle(localidad);
-			nomLocalidad = (TextView) findViewById(R.id.localidad);
-			nomLocalidad.setText("Vecindario: "+ vecindario);
-			/*Get detalis info for remote server, returns a URL array*/
-			getDetalles();
+			else{ 
+				 /* Agrega el nombre del municipio al titulo de la pantalla. */
+				this.setTitle(localidad);
+				nomLocalidad = (TextView) findViewById(R.id.localidad);
+				nomLocalidad.setText("Vecindario: "+ vecindario);
+				
+				/* Obtenemos la información detallada del municipio. */
+				getDetalles();
+			 }
 		}
-		catch(JSONException ex){
+		catch(JSONException ex) {
 			ex.printStackTrace();
-			Log.d("JSON Exception Address", ex.toString());
+			//Log.d("JSON Exception Address", ex.toString());
 		}
 		
 	}
-	/*
-	 * Parsea el nombre de localidad y vecindario si existiese en el JSON devuelto por Geocode API
-	 * */
-	private String getLocalidades(JSONArray array, String param ) throws JSONException{
+
+	/**
+	 * Obtiene valores especificos de posiciones en arreglos JSON. Nombre de la localidad y vecindario.
+	 *
+	 * @param array JSONArray. Arreglo JSON.
+	 * @param param String. Parametro a filtrar.
+	 * @return String. Valor definido por la variable param.
+	 * @throws JSONException the JSON exception
+	 */
+	private String getLocalidades(JSONArray array, String param ) throws JSONException {
 		int i=0;
 		String value = "";
 		
@@ -529,12 +497,15 @@ public class MainActivity extends Activity{
 	
 	
 
+    /**
+     * Obtiene los detalles del municipio en el servidor y asigna las URL a la clase DataHandler.
+     * 
+     * @see MyUtils, getDetallesMunicipio
+     * @return void
+     */
     public void getDetalles(){
     	
-    	/*Obtiene JSON de detalles municipio*/
-		//getDetallesMunicipio detMunicipio = new getDetallesMunicipio();
-		//detMunicipio.execute();
-		getDetallesMunicipio detMunicipio = new getDetallesMunicipio();
+    	getDetallesMunicipio detMunicipio = new getDetallesMunicipio();
 		
 		detMunicipio.execute(this.localidad,this.vecindario);
     	String detalles = null;
@@ -549,9 +520,9 @@ public class MainActivity extends Activity{
 			e.printStackTrace();
 		}
 		
+		/* Asigna los datos obtenidos */
 		MyUtils utils = new MyUtils();
 		utils.parseJSON(getApplicationContext(), detalles);
     }
-
 
 }

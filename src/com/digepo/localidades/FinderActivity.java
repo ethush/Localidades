@@ -17,12 +17,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+/**
+ * Class FinderActivity. Pantalla para busqueda de municipios.
+ */
 public class FinderActivity extends Activity {
+	
+	/** Control de texto para filtrar la lista de municipios. */
 	TextView searchText;
+	
+	/** Lista con los municipios del estado. */
 	ListView lista;
+	
+	/** Arreglo de datos, contiene los municipios del estado. */
 	ArrayAdapter<String> adapter;
 	
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,7 +89,7 @@ public class FinderActivity extends Activity {
 					e.printStackTrace();
 				}
 				
-				/* Con los datos los transformamos a json local y se reescribe la clase DataHandler*/
+				/* Con los datos los transformamos a json local y se reescribe la clase DataHandler */
 				MyUtils utils = new MyUtils();
 				utils.parseJSON(getApplicationContext(), detalles);
 				
@@ -88,14 +100,15 @@ public class FinderActivity extends Activity {
 			
 		});
 		
-		/* esta funcion detecta los cambios de texto y aplica un filtro en el adaptador
+		/* 
+		 * esta funcion detecta los cambios de texto y aplica un filtro en el adaptador
 		 * para actualizar la lista
 		 * */
 		searchText.addTextChangedListener(new TextWatcher() {
 			
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				/* Realiza el filtro en el Listview desde el primer caracter escrito en el cuadro de texto*/
+				/* Realiza el filtro en el Listview desde el primer caracter escrito en el cuadro de texto. */
 				adapter.getFilter().filter(s); 
 			}
 			
@@ -107,12 +120,14 @@ public class FinderActivity extends Activity {
 		});
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.finder, menu);
 		return false;
 	}
-	
 	
 }

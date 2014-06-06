@@ -8,33 +8,27 @@ package com.digepo.localidades;
  * http://docs.google.com/gview?embedded=true&url=http://**yourhost/route/to/your/pdf.pdf
  * */
 
+/**
+ * Clase DataHandler. Almacena las rutas de datos del municipio que se desea consultar
+ * @see  {@link MyUtils}
+ */
 public class DataHandler {
-	/*
-	 * Important: This info is used to remote query to GoogleMaps API to get 
-	 * name location and info
-	 * */
+		
+	
 	static Double latitude = null, longitude = null;
-	//if uses Genymotion emulator
-	//static String _HOST = "http://10.0.3.2/";
-	//static String _HOST = "http://durmanriegossolucionesagricolas.com.mx";
-	//static String _HOST = "http://www.gioax.com.mx";
-	//if uses android emulator also in ahrdware device
-	//static String _HOST = "http://10.0.2.2/";
-	//static String _ROOT = "digepo_SIG";
-	//static String _SCRIPT = "data.php";
 	
 	/*
 	 * Basic data information lo show in some screens and info manipulation
 	 * */
+	
 	static String localidad = "";
+	
 	static String vecindario = "";
+    
     static String municipio = "";
+	
 	static String region = "";
     
-    /* If needed show web url views
-     * For generic use and avoid modify the code change the url String inserver side
-     * temporaly will be store in this class for easy access and debug, to deplyment please
-     * please use return complete url in server side.*/
     static String doc1 = "";
     static String doc2 = "";
     static String doc3 = "";
@@ -46,7 +40,7 @@ public class DataHandler {
     static String doc9 = "";
     static String doc10 = "";
     static String doc11 = "";
-    
+
     static String pais_doc1 = "";
     static String pais_doc2 = "";
     static String pais_doc3 = "";
@@ -95,7 +89,7 @@ public class DataHandler {
     static String canada_doc9 = "";
     static String canada_doc10 = "";
     static String canada_doc11 = "";
-    
+
     static String costa_doc1 = "";
     static String costa_doc2 = "";
     static String costa_doc3 = "";

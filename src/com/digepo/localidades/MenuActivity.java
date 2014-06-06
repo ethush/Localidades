@@ -12,18 +12,36 @@ import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 
+/**
+ * Clase MenuActivity. Clase para la pantalla de detalles del municipio adquirido.
+ */
 public class MenuActivity extends Activity {
-	/*
-	 * Se declara cada boton de evento por la animación 3D que se esta efectuando.
-	 * */
-	Button graf1, graf2, graf3, graf4, graf5, graf6, graf7, graf8, graf9, graf10, graf11, boton = null;
 	
+	/**   Botones graf* son usados para controlar la animacion de forma individual y lanzar las pantallas de información showGraf*() . */
+	
+	Button graf1;
+	Button graf2; 
+	Button graf3;
+	Button graf4;
+	Button graf5;
+	Button graf6; 
+	Button graf7; 
+	Button graf8; 
+	Button graf9;
+	Button graf10; 
+	Button graf11; 
+	Button boton = null;
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_menu);
 		
+		/* Botones Graf* Se obtienen las instancias de botones declaradas en la interfaz XML. */
 		graf1 = (Button)findViewById(R.id.graf1);
 		graf2 = (Button)findViewById(R.id.graf2);
 		graf3 = (Button)findViewById(R.id.graf3);
@@ -36,14 +54,24 @@ public class MenuActivity extends Activity {
 		graf10 = (Button)findViewById(R.id.graf10);
 		graf11 = (Button)findViewById(R.id.graf11);
 		
+		
+		/*
+		 * Se declara el evento setOnClickListener para cada boton,
+		 * de esta forma se agrega el efecto de giro 3D proporcionado 
+		 * por la clase Flip3dAnimation y lanzar las pantallas de los
+		 * indicadores al finalizar la animación.
+		 * */
+		
 		graf1.setOnClickListener(new Button.OnClickListener() {
 			
 			@Override
 			public void onClick(final View arg0) {
 				
+				/* Se obtiene el alto y ancho del control. */
 				float centerX = graf1.getWidth() / 2.0f;
 				float centerY = graf1.getHeight() / 2.0f;
 				
+				/* Crea una instancia de tipo Flip3dAnimation, se declara el tipo de movimiento y duración. */
 				final Flip3dAnimation animador = new Flip3dAnimation(0, 180, centerX, centerY);
 				
 				
@@ -52,16 +80,22 @@ public class MenuActivity extends Activity {
 								
 				animador.setInterpolator(new AccelerateInterpolator());
 				
+				/* Inicia la animación. */
 				arg0.startAnimation(animador);
-				Timer t = new Timer();
 				
+				/* 
+				 * Se inicia un timer calculado en el mismo tiempo para iniciar la aplicación,
+				 * si no esta presente el efecto no sera visualizado. En el metodo run()
+				 * se asigna el boton que fue presionado, al momento de que se presione "back"
+				 * se realice la animación contraria y restaurarlo a su posición inicial.
+				 * */
+				Timer t = new Timer();
 				TimerTask tTask = new TimerTask() {
 					
 					@Override
 					public void run() {
 						boton = graf1;
-						showGraf1(arg0);					
-						
+						showGraf1(arg0);
 					}
 				};
 				
@@ -381,6 +415,9 @@ public class MenuActivity extends Activity {
 			});
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -388,16 +425,28 @@ public class MenuActivity extends Activity {
 		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		overridePendingTransition(0, R.anim.efecto_salida_1);
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(boton!=null){//Retorna el boton a su estado inicial con un efecto inverso
+		/**
+		 * Cuando se inicia una actividad de indicadores se guarda el estado
+		 * del boton, cuando el usuario presiona "back" se hace el efecto inverso 
+		 * para restaurar el boton a su posicion original.
+		 * */
+		if(boton!=null){
 			float centerX = boton.getWidth() / 2.0f;
 			float centerY = boton.getHeight() / 2.0f;
 			
@@ -418,76 +467,132 @@ public class MenuActivity extends Activity {
 	 * se usa la clase estatica DataHandler para proporcionar la url de la cual se obtendrá 
 	 * la información que mostrara la actividad PDFViewer_Activity
 	 * */
-	public void showGraf1 (View v){
+	/**
+	 * Muestra rubro Población.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf1 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc1);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf2 (View v){
+	/**
+	 * Muestra rubro Vivienda.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf2 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc2);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf3 (View v){
+	/**
+	 * Muestra rubro Fecundidad y mortalidad.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf3 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc3);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf4 (View v){
+	/**
+	 * Muestra rubro Educación.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf4 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc4);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf5 (View v){
+	/**
+	 * Muestra rubro Economía.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf5 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc5);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf6 (View v){
+	/**
+	 * Muestra rubro Situación Conyugal.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf6 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc6);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf7 (View v){
+	/**
+	 * Muestra rubro Limitaciones físicas o mentales.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf7 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc7);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf8 (View v){
+	/**
+	 * Muestra rubro Salud.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf8 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc8);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
-	public void showGraf9 (View v){
+	
+	/**
+	 * Muestra rubro Religión.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf9 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc9);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf10 (View v){
+	/**
+	 * Muestra rubro Lengua indigena.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf10 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc10);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
-	public void showGraf11 (View v){
+	/**
+	 * Muestra rubro Migración.
+	 *
+	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
+	 */
+	public void showGraf11 (View v) {
 		Intent intent = new Intent(this,PDFViewerActivity.class);
 		intent.putExtra("url", DataHandler.doc10);
 		startActivity(intent);

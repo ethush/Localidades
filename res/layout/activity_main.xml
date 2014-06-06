@@ -20,7 +20,7 @@
 	    	android:layout_height="0dp"
 	    	android:layout_weight="0.25"    	
 	    	class="com.google.android.gms.maps.MapFragment"
-	    	android:apiKey="AIzaSyBXkm_hbJhRQ80m-3WVwTzJw3nNtO4aE4g" />
+	    	android:apiKey="AIzaSyDDCGYjxIHsFdOO8Z0k5rhPZ3r_--I2JOs" />
 	     <!-- Divisor de mapa y contenido -->
 	   
 		<LinearLayout 
