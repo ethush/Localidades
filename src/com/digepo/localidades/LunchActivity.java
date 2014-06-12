@@ -27,11 +27,8 @@ public class LunchActivity extends Activity {
 
 	boolean isGPS;
 	boolean isWifi;
-		
-	boolean isbackPressed;
-	boolean second;
-	boolean first;
 	
+	boolean isbackPressed;
 	
 	LocationManager locManager = null;
 	/* (non-Javadoc)
@@ -55,7 +52,37 @@ public class LunchActivity extends Activity {
 			case ConnectionResult.SUCCESS:
 					
 				
-				iniciaApp();
+				if(locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+					//Log.e("Iniciando", "GPSservice activo");
+					isGPS = true;
+				}
+				else if(locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+					//Log.e("Iniciando", "WIFIservice activo");
+					isWifi = true;
+				}
+				else {
+					Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS); 
+			        startActivity(intent);
+					Toast.makeText(getApplicationContext(), "No se ha encontrado un proveedor de localización activo.", Toast.LENGTH_LONG).show();
+				}
+				
+				if (isGPS || isWifi) {
+					Log.e("Funcion", "Lanzando App");
+					TimerTask task = new TimerTask() {
+						/* Timer para definir tiempo de espera antes de lanzar la pantalla principal. */
+						@Override
+						public void run() {
+							//Iniciamos la actividad de mapa y obtencion de datos
+							Intent intent = new Intent().setClass(LunchActivity.this, MainActivity.class);
+							startActivity(intent);
+							overridePendingTransition(R.anim.zoom_splash_out, R.anim.zoom_splash);
+							finish();
+						}
+					};
+					
+					Timer timer = new Timer();
+					timer.schedule(task, 3000);
+				}
 				
 				break;
 			/* En caso que no se tenga Google Play o Google Services instalado
@@ -95,11 +122,9 @@ public class LunchActivity extends Activity {
 		if(isbackPressed) {
 			Log.e("onResume", "iniciaApp");
 			iniciaApp();
-			if (first) first = false;
 		}
 		else {
 			isbackPressed = false;
-			first = false;
 		}
 	}
 	
@@ -107,43 +132,20 @@ public class LunchActivity extends Activity {
 	protected void onRestart() {
 		super.onRestart();
 		isbackPressed = true;
-		first = true;
-	}
-	
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		Log.e("onBackPressed", "Back");
 	}
 	
 	public void iniciaApp() {
-		boolean serviceExists = false;
-		
 		if(locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-			Log.e("Iniciando", "GPSservice activo");
+			//Log.e("Iniciando", "GPSservice activo");
 			isGPS = true;
-			
-			serviceExists = true;
 		}
 		else if(locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-			Log.e("Iniciando", "WIFIservice activo");
+			//Log.e("Iniciando", "WIFIservice activo");
 			isWifi = true;
-			
-			serviceExists = true;
 		}
-		
-		if(!serviceExists && !first) {
-			
-			Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS); 
-	        startActivity(intent);
-			Toast.makeText(getApplicationContext(), "No se ha encontrado un proveedor de localización activo.", Toast.LENGTH_LONG).show();
-		}
-		
-		
-		
 		
 		if (isGPS || isWifi) {
-			Log.e("Funcion", "Lanzando App");
+			//Log.e("Funcion", "Lanzando App");
 			TimerTask task = new TimerTask() {
 				/* Timer para definir tiempo de espera antes de lanzar la pantalla principal. */
 				@Override
@@ -160,7 +162,7 @@ public class LunchActivity extends Activity {
 			timer.schedule(task, 3000);
 		}
 		
-		if(!serviceExists && !first) {
+		else {
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.setMessage("No se habilitaron servicios de localización WIFI o GPS. \n ¿Desea continuar?");
 			alert.setCancelable(false);

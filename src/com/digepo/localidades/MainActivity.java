@@ -137,9 +137,11 @@ public class MainActivity extends Activity{
 							locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 					 }
 				}
-				 else {
-					 Log.e("error", "error en wifi");
-				 }
+				else {
+					Toast.makeText(getApplicationContext(), "No se encontro el servicio de localizaicón activo. \n Intente de forma manual.", Toast.LENGTH_LONG).show();
+					Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
+					startActivity(intent);
+				}
 			}
 		}
 		else{
@@ -290,6 +292,11 @@ public class MainActivity extends Activity{
 					locacionMngr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 				}
 			}
+			else {
+				Toast.makeText(getApplicationContext(), "No se encontro el servicio de localizaicón activo. \n Intente de forma manual.", Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
+				startActivity(intent);
+			}
 		}		
 	}
 	
@@ -322,6 +329,7 @@ public class MainActivity extends Activity{
 				if(latitude !=null && longitude !=null) {
 					LatLongAcq = true;
 					//Toast.makeText(getApplicationContext(), latitude +" --- "+ longitude, Toast.LENGTH_SHORT).show();
+					Log.e("Posicion", latitude +" --- "+ longitude);
 					DataHandler.latitude = latitude;
 					DataHandler.longitude = longitude;
 				
@@ -450,7 +458,7 @@ public class MainActivity extends Activity{
 			localidad = getLocalidades(array,"locality");
 			
 			/* Si las variables resultaran vacías se inicia una busqueda manual.*/
-			Log.d("Valores", localidad + " - " + vecindario);
+			//Log.d("Valores", localidad + " - " + vecindario);
 			if(vecindario.isEmpty() && localidad.isEmpty())	{
 				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir información del municipio.", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
