@@ -138,7 +138,7 @@ public class MainActivity extends Activity{
 					 }
 				}
 				else {
-					Toast.makeText(getApplicationContext(), "No se encontro el servicio de localizaicón activo. \n Intente de forma manual.", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "No se encontro el servicio de localización activo. \n Intente de forma manual.", Toast.LENGTH_LONG).show();
 					Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
 					startActivity(intent);
 				}
@@ -293,7 +293,7 @@ public class MainActivity extends Activity{
 				}
 			}
 			else {
-				Toast.makeText(getApplicationContext(), "No se encontro el servicio de localizaicón activo. \n Intente de forma manual.", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "No se encontro el servicio de localización activo. \n Intente de forma manual.", Toast.LENGTH_LONG).show();
 				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
 				startActivity(intent);
 			}

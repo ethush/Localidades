@@ -20,7 +20,7 @@ public class DataHandler {
 	/*
 	 * Basic data information lo show in some screens and info manipulation
 	 * */
-	
+	static String id = "";
 	static String localidad = "";
 	
 	static String vecindario = "";

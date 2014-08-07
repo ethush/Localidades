@@ -466,6 +466,7 @@ public class MenuActivity extends Activity {
 	 * Actividad usada para mostrar la información correspondiente al municipio que se obtuvo mediante GPS
 	 * se usa la clase estatica DataHandler para proporcionar la url de la cual se obtendrá 
 	 * la información que mostrara la actividad PDFViewer_Activity
+	 * 
 	 * */
 	/**
 	 * Muestra rubro Población.
@@ -473,8 +474,13 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf1 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		//Intent intent = new Intent(this,PDFViewerActivity.class);
+		//intent.putExtra("url", DataHandler.doc1);
+		
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc1);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 1);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -485,14 +491,16 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf2 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc2);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 2);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
 	/**
-	 * Muestra rubro Fecundidad y mortalidad.
+	 * Muestra rubro Fecundidad y mortalidad. --pendiente para el final *****************************
 	 *
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
@@ -509,8 +517,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf4 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc4);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 3);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}

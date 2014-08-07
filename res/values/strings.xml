@@ -62,7 +62,10 @@
     <string name="title_activity_region_menu">RegionMenuActivity</string>
     <string name="title_activity_finder">FinderActivity</string>
     <string name="global">Nacional</string>
-	<string name="municipio">Municipio</string>
-	<string name="on_load_url_error">Failed to load resource.</string>
-	<string name="to_find">Type to search</string>
+    <string name="municipio">Municipio</string>
+    <string name="on_load_url_error">Failed to load resource.</string>
+    <string name="to_find">Type to search</string>
+    <string name="title_activity_datos">Data Viewer</string>
+    <string name="title_activity_data">Datos</string>
+	<string name="showPDF">Ver documento PDF</string>
 </resources>

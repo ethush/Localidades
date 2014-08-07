@@ -60,4 +60,7 @@
 	<string name="municipio">Municipio</string>
 	<string name="on_load_url_error">Ha ocurrido un error al cargar el recurso.</string>
 	<string name="to_find">Municipio a buscar:</string>
+	 <string name="title_activity_datos">Datos demográficos</string>
+	<string name="title_activity_data">Datos</string>
+	<string name="showPDF">View PDF Document</string>
 </resources>

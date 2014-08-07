@@ -2,19 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.digepo.localidades"
     android:versionCode="10"
-    android:versionName="1.6.7" 
-    >
+    android:versionName="1.6.7" >
 
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
-    <supports-screens 
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
         android:smallScreens="true"
-        android:normalScreens="true" 
-        android:largeScreens="true" 
         android:xlargeScreens="true" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -24,24 +23,23 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-<!--     <permission android:name="com.example.map.permission.MAPS_RECEIVE" android:protectionLevel="signature"/> -->
-<!--     <permission android:name="com.digepo.localidades.maps.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>  -->
-<!--     <uses-permission android:name="com.example.localidades.permission.MAPS_RECEIVE"/> -->
-    <uses-permission android:name="com.digepo.localidades.maps.permission.MAPS_RECEIVE"/>
+    <!-- <permission android:name="com.example.map.permission.MAPS_RECEIVE" android:protectionLevel="signature"/> -->
+    <!-- <permission android:name="com.digepo.localidades.maps.permission.MAPS_RECEIVE" android:protectionLevel="signature"/> -->
+    <!-- <uses-permission android:name="com.example.localidades.permission.MAPS_RECEIVE"/> -->
+    <uses-permission android:name="com.digepo.localidades.maps.permission.MAPS_RECEIVE" />
     <!-- Maps API needs OpenGL ES 2.0. -->
     <uses-feature
-    android:glEsVersion="0x00020000"
-    android:required="true"/>
-    
-    
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ico_sol"
         android:label="@string/app_name"
-        android:theme="@style/AppBaseTheme">
-        
-<!--         <uses-library android:name="com.google.android.maps" /> -->
-        
+        android:theme="@style/AppBaseTheme" >
+
+        <!-- <uses-library android:name="com.google.android.maps" /> -->
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDDCGYjxIHsFdOO8Z0k5rhPZ3r_--I2JOs" />
@@ -50,64 +48,73 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="com.digepo.localidades.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.Menu"
+            android:name=".Menu"
             android:label="@string/title_activity_menu"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.MenuActivity"
+            android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.ImgViewActivity"
+            android:name=".ImgViewActivity"
             android:label="@string/title_activity_img_view"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.PoliticalMenuActivity"
+            android:name=".PoliticalMenuActivity"
             android:label="@string/title_activity_political_menu"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.PDFViewerActivity"
+            android:name=".PDFViewerActivity"
             android:label="@string/title_activity_pdfviewer"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.RegionActivity"
+            android:name=".RegionActivity"
             android:label="@string/title_activity_region"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.LunchActivity"
+            android:name=".LunchActivity"
             android:label="@string/title_activity_lunch"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.digepo.localidades.PaisActivity"
+            android:name=".PaisActivity"
             android:label="@string/title_activity_pais" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.EstadoActivity"
+            android:name=".EstadoActivity"
             android:label="@string/title_activity_estado" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.RegionMenuActivity"
+            android:name=".RegionMenuActivity"
             android:label="@string/title_activity_region_menu" >
         </activity>
         <activity
-            android:name="com.digepo.localidades.FinderActivity"
+            android:name=".FinderActivity"
             android:label="@string/title_activity_finder" >
+        </activity>
+        <activity
+            android:name=".DatosActivity"
+            android:label="@string/title_activity_datos" >
+        </activity>
+        <activity
+            android:name=".DataActivity"
+            android:label="@string/title_activity_data" >
         </activity>
     </application>
 

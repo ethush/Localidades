@@ -51,6 +51,7 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 		
 		String _ROOT = "digepo_SIG";
 		String _SCRIPT = "data.php";
+		
 
 		/** MCrypt mcrypt_a: Clase para codificación de valores. @see MCrypt */
 		MCrypt mcrypt_a = new MCrypt();
@@ -86,9 +87,10 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 		/*
 		 * Se forma la URL con las variables codificadas antes de procesar la solicitud con la funcion getHTTPJSON
 		 */
+		
 		req = _HOST + "/" + _ROOT + "/" + _SCRIPT + "?";
 		req +="localidad="+xLocalidad+"&vecindario="+xVecindario;
-		
+		//Log.e("URL_MUNICIPIOS", req);
 		
 		try { 
 			data = getHTTPJSON(req);

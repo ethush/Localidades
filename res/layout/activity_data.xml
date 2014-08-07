@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/background_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="2dp"
+    android:screenOrientation="portrait"
+    android:orientation="vertical"
+    tools:context="com.digepo.localidades.DataActivity" >
+    
+    <WebView  
+        android:id="@+id/datos"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".50"
+	/>
+    
+    <Button 
+        android:id="@+id/showPDF"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showPDF"
+        android:visibility="visible"
+        android:onClick="showPDF"
+        />
+
+</LinearLayout>

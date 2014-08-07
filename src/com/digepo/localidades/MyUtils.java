@@ -165,7 +165,8 @@ public class MyUtils {
 					DataHandler.valles_centrales_doc9 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc9").toString()));
 					DataHandler.valles_centrales_doc10 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc10").toString()));
 					DataHandler.valles_centrales_doc11 = new String(mcrypt.decrypt(jObjDet.getString("valles_centrales_doc11").toString()));
-										
+					
+					DataHandler.id= new String(mcrypt.decrypt(jObjDet.getString("id_municipio").toString()));
 					DataHandler.municipio= new String(mcrypt.decrypt(jObjDet.getString("municipio").toString()));
 					DataHandler.region = new String(mcrypt.decrypt(jObjDet.getString("region")));
 					
