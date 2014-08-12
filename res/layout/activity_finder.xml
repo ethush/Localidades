@@ -8,8 +8,8 @@
     android:paddingRight="0dip"
     android:paddingTop="0dip"
     tools:context=".FinderActivity" 
+    android:screenOrientation="portrait"
     android:orientation="vertical"
-    android:screenOrientation = "portrait"
     >
 
   <EditText

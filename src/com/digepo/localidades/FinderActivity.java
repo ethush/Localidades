@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -69,7 +70,7 @@ public class FinderActivity extends Activity {
 				/* Obtenemos el objeto que contiene el texto del item seleccionado y se asigna a DataHandler */ 
 				Object item = lista.getItemAtPosition(arg2);
 				String municipio = item.toString();
-				//Log.e("valor",item.toString());
+				Log.e("valor",item.toString());
 				
 				DataHandler.localidad = municipio;
 				DataHandler.vecindario = "Centro";

@@ -94,23 +94,23 @@
         </activity>
         <activity
             android:name=".PaisActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_pais" >
         </activity>
         <activity
             android:name=".EstadoActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_estado" >
         </activity>
         <activity
             android:name=".RegionMenuActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_region_menu" >
         </activity>
         <activity
             android:name=".FinderActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_finder" >
-        </activity>
-        <activity
-            android:name=".DatosActivity"
-            android:label="@string/title_activity_datos" >
         </activity>
         <activity
             android:name=".DataActivity"

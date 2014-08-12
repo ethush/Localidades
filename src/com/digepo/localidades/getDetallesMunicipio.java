@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 /**
  * Clase: getDetallesMunicipio. Obtiene las rutas de datos del servidor en formato JSON plano para convertir en JSONObject.
@@ -65,6 +66,8 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 		try { 
 			if(!url[1].isEmpty()) {
 				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(url[1])));
+				//xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(url[1].toString()));
+				Log.e("sin acentos_1", url[1]);
 			}
 			else {
 				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
@@ -76,6 +79,8 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 		try{ 
 			if(!url[0].isEmpty()) {
 				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(url[0])));
+				//xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(url[0].toString()));
+				Log.e("sin acentos_0", url[0]);
 			}
 			else {
 				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
@@ -90,7 +95,7 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 		
 		req = _HOST + "/" + _ROOT + "/" + _SCRIPT + "?";
 		req +="localidad="+xLocalidad+"&vecindario="+xVecindario;
-		//Log.e("URL_MUNICIPIOS", req);
+		Log.e("URL_MUNICIPIOS", req);
 		
 		try { 
 			data = getHTTPJSON(req);

@@ -531,14 +531,16 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf5 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc5);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 4);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 	
 	/**
-	 * Muestra rubro Situación Conyugal.
+	 * Muestra rubro Situación Conyugal. --- pendiente
 	 *
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
@@ -555,8 +557,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf7 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc7);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 6);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -567,8 +571,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf8 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc8);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 7);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -579,8 +585,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf9 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc9);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 8);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -591,8 +599,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf10 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc10);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 9);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -603,8 +613,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf11 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc10);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 10);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
