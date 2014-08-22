@@ -42,13 +42,13 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 	@Override 
 	protected String doInBackground(String... url) {
 		// Servidor de producción.
-		String _HOST = "http://www.gioax.com.mx";
+		//String _HOST = "http://www.gioax.com.mx";
 		
 		//if uses android emulator also in hardware device
 		//String _HOST = "http://10.0.2.2/";
 		
 		//if uses Genymotion emulator
-		//String _HOST = "http://10.0.3.2/";
+		String _HOST = "http://10.0.3.2/";
 		
 		String _ROOT = "digepo_SIG";
 		String _SCRIPT = "data.php";
@@ -67,7 +67,7 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 			if(!url[1].isEmpty()) {
 				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(url[1])));
 				//xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt(url[1].toString()));
-				Log.e("sin acentos_1", url[1]);
+				//Log.e("sin acentos_1", url[1]);
 			}
 			else {
 				xVecindario = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));
@@ -80,7 +80,7 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 			if(!url[0].isEmpty()) {
 				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(sin_acentos(url[0])));
 				//xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt(url[0].toString()));
-				Log.e("sin acentos_0", url[0]);
+				//Log.e("sin acentos_0", url[0]);
 			}
 			else {
 				xLocalidad = MCrypt.bytesToHex(mcrypt_a.encrypt("Dalvik"));

@@ -8,7 +8,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 public class getUrlDatos extends AsyncTask<String, String, String> {
 
@@ -32,17 +31,7 @@ public class getUrlDatos extends AsyncTask<String, String, String> {
 			
 		String _ROOT = "digepo_SIG";
 		
-		/* scripts de peticiones para datos con formato. */
-		String _SCRIPT_DERECHOHABIENCIA = "derechohabiencia.php";
-		String _SCRIPT_ECONOMIA = "economia.php";
-		String _SCRIPT_EDUCACION = "educacion.php";
-		String _SCRIPT_LENGUA = "lengua.php";
-		String _SCRIPT_LIMITACIONES = "limitaciones.php";
-		String _SCRIPT_MIGRACION = "migracion.php";
-		String _SCRIPT_POBLACION = "poblacion.php";
-		String _SCRIPT_RELIGION = "religion.php";
-		String _SCRIPT_VIVIENDA = "vivienda.php";
-		String _SCRIPT_MORTALIDAD = "mortalidad.php";
+		
 		String _SCRIPT = null;
 			
 
@@ -59,42 +48,42 @@ public class getUrlDatos extends AsyncTask<String, String, String> {
 		 *  2. Vivienda
 		 *  3. Educacion
 		 *  4. Economia -- Esto incluye el script economia_distribución
-		 *  5. Situacion Conyugal
+		 *  5. Mortalidad
 		 *  6. Limitaciones
 		 *  7. Salud (derechoabiencia)
 		 *  8. Religion
 		 *  9. Lengua indigena
 		 *  10. Migracion.
-		 *  11. Mortalidad y natalidad
+		 *  11. Situacion Conyugal
 		 */
 		
 		switch(Integer.parseInt(param[1])) {
-			case 1: _SCRIPT = _SCRIPT_POBLACION;
+			case 1: _SCRIPT = "poblacion.php";
 				break;
-			case 2: _SCRIPT = _SCRIPT_VIVIENDA;
+			case 2: _SCRIPT = "vivienda.php";
 				break;
-			case 3: _SCRIPT = _SCRIPT_EDUCACION;
+			case 3: _SCRIPT = "vivienda.php";
 				break;
-			case 4: _SCRIPT = _SCRIPT_ECONOMIA; 
+			case 4: _SCRIPT = "economia.php"; 
 				break; 
-			case 5: _SCRIPT = null; /* Situación conyugal */
+			case 5: _SCRIPT = "natalidad_mortalidad.php";
 				break;
-			case 6: _SCRIPT = _SCRIPT_LIMITACIONES;
+			case 6: _SCRIPT = "limitaciones.php";
 				break;
-			case 7: _SCRIPT = _SCRIPT_DERECHOHABIENCIA;
+			case 7: _SCRIPT ="derechohabiencia.php";
 				break; 
-			case 8: _SCRIPT = _SCRIPT_RELIGION;
+			case 8: _SCRIPT = "religion.php";
 				break;
-			case 9: _SCRIPT = _SCRIPT_LENGUA;
+			case 9: _SCRIPT = "lengua.php";
 				break;
-			case 10: _SCRIPT = _SCRIPT_MIGRACION;
-				break;
-			case 11: _SCRIPT = _SCRIPT_MORTALIDAD;
+			case 10: _SCRIPT = "migracion.php";
+				break;	
+			case 11: _SCRIPT = "situacion.php";
 				break;	
 		}
-		Log.e("parametros", param[0].toString());
+		//Log.e("parametros", param[0].toString());
 		req = _HOST + "/" + _ROOT + "/" + _SCRIPT + "?id="+param[0].toString();
-		Log.e("URL_datos", req);
+		//Log.e("URL_datos", req);
 				
 		try { 
 			data = getHTTPJSON(req);

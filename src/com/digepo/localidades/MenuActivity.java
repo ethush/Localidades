@@ -500,13 +500,15 @@ public class MenuActivity extends Activity {
 	}
 	
 	/**
-	 * Muestra rubro Fecundidad y mortalidad. --pendiente para el final *****************************
+	 * Muestra rubro Fecundidad y mortalidad.
 	 *
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf3 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc3);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro", 5);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -545,8 +547,10 @@ public class MenuActivity extends Activity {
 	 * @param v View. Contexto de la aplicación, requerido para poder declarar el evento.
 	 */
 	public void showGraf6 (View v) {
-		Intent intent = new Intent(this,PDFViewerActivity.class);
+		Intent intent = new Intent(this,DataActivity.class);
 		intent.putExtra("url", DataHandler.doc6);
+		intent.putExtra("id", DataHandler.id);
+		intent.putExtra("rubro",11);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -614,7 +618,7 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf11 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc10);
+		intent.putExtra("url", DataHandler.doc11);
 		intent.putExtra("id", DataHandler.id);
 		intent.putExtra("rubro", 10);
 		startActivity(intent);

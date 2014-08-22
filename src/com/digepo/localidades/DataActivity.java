@@ -6,9 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
@@ -19,6 +19,8 @@ public class DataActivity extends Activity {
 
 	String id_municipio, url_pdf;
 	int rubro;
+	
+	ProgressDialog progress;
 	
 	WebView datos;
 	Button botonPDF;
@@ -47,7 +49,7 @@ public class DataActivity extends Activity {
 		}
 		
 		//datos.setText("Municipio id:" +id_municipio + "\tURL:" + url_pdf + "\tRubro:" + rubro );
-		
+		progress = ProgressDialog.show(getApplicationContext(), "Cargando datos.", "Por favor, espere.");
 		solicitaDatos();
 	}
 
@@ -78,11 +80,13 @@ public class DataActivity extends Activity {
 		/* Intento de peticion http y asignación de JSON*/
 		try {
 			datos_demograficos = urlDatos.get();
-			Log.e("Datos Demograficos", datos_demograficos);
+			//Log.e("Datos Demograficos", datos_demograficos);
 			/* Conversion a objeto JSON y asignación al textview */
 			JSONObject jsonDatos = new JSONObject(datos_demograficos);
 			//datos.setText(Html.fromHtml(jsonDatos.getString("poblacion").toString()));
 			datos.loadData(jsonDatos.getString("datos").toString(),"text/html","UTF-8");
+			
+			progress.dismiss();
 		} catch (InterruptedException e) {		
 			e.printStackTrace();
 		} catch (ExecutionException e) {

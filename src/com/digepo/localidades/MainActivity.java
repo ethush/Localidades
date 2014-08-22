@@ -356,7 +356,7 @@ public class MainActivity extends Activity{
 			try{
 				if(mapa==null && LatLongAcq) {
 					mapa = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapa)).getMap();
-					
+										
 					if(mapa!=null) {
 						//posicionamos la camara del mapa
 						mapa.moveCamera(CameraUpdateFactory.newLatLng(posicion));
@@ -458,12 +458,17 @@ public class MainActivity extends Activity{
 			localidad = getLocalidades(array,"locality");
 			
 			/* Si las variables resultaran vacías se inicia una busqueda manual.*/
-			//Log.d("Valores", localidad + " - " + vecindario);
+			Log.d("Valores", localidad + " - " + vecindario);
 			if(vecindario.isEmpty() && localidad.isEmpty())	{
 				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir información del municipio.", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
 				startActivity(intent);
 			}
+			/*else if(localidad.equals("Dalvik")) {
+				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir información del municipio.", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
+				startActivity(intent);
+			}*/
 			else{ 
 				 /* Agrega el nombre del municipio al titulo de la pantalla. */
 				this.setTitle(localidad);
