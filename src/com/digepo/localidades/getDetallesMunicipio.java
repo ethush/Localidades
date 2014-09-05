@@ -11,7 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 /**
  * Clase: getDetallesMunicipio. Obtiene las rutas de datos del servidor en formato JSON plano para convertir en JSONObject.
@@ -42,13 +41,13 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 	@Override 
 	protected String doInBackground(String... url) {
 		// Servidor de producción.
-		//String _HOST = "http://www.gioax.com.mx";
+		String _HOST = "http://www.gioax.com.mx";
 		
 		//if uses android emulator also in hardware device
 		//String _HOST = "http://10.0.2.2/";
 		
 		//if uses Genymotion emulator
-		String _HOST = "http://10.0.3.2/";
+		//String _HOST = "http://10.0.3.2/";
 		
 		String _ROOT = "digepo_SIG";
 		String _SCRIPT = "data.php";
@@ -95,7 +94,7 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 		
 		req = _HOST + "/" + _ROOT + "/" + _SCRIPT + "?";
 		req +="localidad="+xLocalidad+"&vecindario="+xVecindario;
-		Log.e("URL_MUNICIPIOS", req);
+		//Log.e("URL_MUNICIPIOS", req);
 		
 		try { 
 			data = getHTTPJSON(req);

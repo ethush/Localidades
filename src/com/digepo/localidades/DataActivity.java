@@ -20,7 +20,7 @@ public class DataActivity extends Activity {
 	String id_municipio, url_pdf;
 	int rubro;
 	
-	ProgressDialog progress;
+	ProgressDialog progress = null;
 	
 	WebView datos;
 	Button botonPDF;
@@ -49,8 +49,10 @@ public class DataActivity extends Activity {
 		}
 		
 		//datos.setText("Municipio id:" +id_municipio + "\tURL:" + url_pdf + "\tRubro:" + rubro );
-		progress = ProgressDialog.show(getApplicationContext(), "Cargando datos.", "Por favor, espere.");
+		progress = ProgressDialog.show(this, "Cargando datos.", "Por favor, espere.");
 		solicitaDatos();
+		progress.dismiss();
+		
 	}
 
 	@Override
@@ -85,8 +87,6 @@ public class DataActivity extends Activity {
 			JSONObject jsonDatos = new JSONObject(datos_demograficos);
 			//datos.setText(Html.fromHtml(jsonDatos.getString("poblacion").toString()));
 			datos.loadData(jsonDatos.getString("datos").toString(),"text/html","UTF-8");
-			
-			progress.dismiss();
 		} catch (InterruptedException e) {		
 			e.printStackTrace();
 		} catch (ExecutionException e) {

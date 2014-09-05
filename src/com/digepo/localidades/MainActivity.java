@@ -80,7 +80,7 @@ public class MainActivity extends Activity{
 			
 			if(netInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
 				Toast.makeText(this, "Usando 3G - GPS", Toast.LENGTH_SHORT).show();
-				Log.d("CONEXION", "POR GPS");
+				//Log.d("CONEXION", "POR GPS");
 				if(locacionMngr.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 					
 					LocationListener listener = new myLocListener();
