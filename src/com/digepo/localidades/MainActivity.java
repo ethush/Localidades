@@ -381,7 +381,6 @@ public class MainActivity extends Activity{
 					 * Obtencion de datos de googleapis/maps en caso de no tener las variables
 					 * de latitud y longitud se inicia la pantalla para busqueda manual.
 					 * */
-					
 					getLocalidad();
 					
 				}
