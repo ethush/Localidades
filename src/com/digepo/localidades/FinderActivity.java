@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -70,7 +69,7 @@ public class FinderActivity extends Activity {
 				/* Obtenemos el objeto que contiene el texto del item seleccionado y se asigna a DataHandler */ 
 				Object item = lista.getItemAtPosition(arg2);
 				String municipio = item.toString();
-				Log.e("valor",item.toString());
+				//Log.e("valor",item.toString());
 				
 				DataHandler.localidad = municipio;
 				DataHandler.vecindario = "Centro";
@@ -92,10 +91,11 @@ public class FinderActivity extends Activity {
 				
 				/* Con los datos los transformamos a json local y se reescribe la clase DataHandler */
 				MyUtils utils = new MyUtils();
-				utils.parseJSON(getApplicationContext(), detalles);
+				utils.parseJSONFinder(getApplicationContext(), detalles);
 				
 				/* Lanzamos el menu para detalles de Municipio */
 				Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
+				intent.putExtra("origen", 2); //variable definida para MainActivity reconozca que clase de datos usar.
 				startActivity(intent);
 			}
 			

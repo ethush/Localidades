@@ -11,8 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.webkit.WebView;
-import android.widget.Button;
 
 
 public class DataActivity extends Activity {
@@ -23,10 +23,11 @@ public class DataActivity extends Activity {
 	ProgressDialog progress = null;
 	
 	WebView datos;
-	Button botonPDF;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_data);
 		
 		Bundle extras = getIntent().getExtras();
@@ -38,15 +39,7 @@ public class DataActivity extends Activity {
 		}
 		
 		datos = (WebView) findViewById(R.id.datos);
-		botonPDF = (Button) findViewById(R.id.showPDF);
 		
-		
-		if(!url_pdf.isEmpty()) {
-			botonPDF.setVisibility(Button.VISIBLE);
-		}
-		else {
-			botonPDF.setVisibility(Button.INVISIBLE);
-		}
 		
 		//datos.setText("Municipio id:" +id_municipio + "\tURL:" + url_pdf + "\tRubro:" + rubro );
 		progress = ProgressDialog.show(this, "Cargando datos.", "Por favor, espere.");

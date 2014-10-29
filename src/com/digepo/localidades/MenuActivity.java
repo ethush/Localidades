@@ -16,7 +16,7 @@ import android.widget.Button;
  */
 public class MenuActivity extends Activity {
 	
-	
+	int origen = 0;
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -25,6 +25,17 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_menu);
+		
+		/* 
+		 * Obtiene el origen de datos, si es por busqueda o localizacion GPS
+		 * 1. Ubicacion por GPS
+		 * 2. Municipio por localidad
+		 * 
+		 */
+		
+		Bundle bundle = getIntent().getExtras();
+		this.origen = bundle.getInt("origen");
+		
 		
 		Button boton1 = (Button) findViewById(R.id.graf1);
 		Button boton2 = (Button) findViewById(R.id.graf2);
@@ -180,8 +191,17 @@ public class MenuActivity extends Activity {
 		//intent.putExtra("url", DataHandler.doc1);
 		
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc1);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc1);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc1);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 1);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -194,8 +214,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf2 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc2);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc2);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc2);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 2);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -208,8 +237,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf3 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc3);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc3);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc3);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 5);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -222,8 +260,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf4 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc4);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc4);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc4);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 3);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -236,8 +283,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf5 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc5);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc5);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc5);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 4);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -250,8 +306,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf6 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc6);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc6);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc6);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro",11);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -264,8 +329,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf7 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc7);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc7);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc7);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 6);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -278,8 +352,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf8 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc8);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc8);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc8);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 7);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -292,8 +375,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf9 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc9);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc9);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc9);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 8);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -306,8 +398,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf10 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc10);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc10);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc10);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 9);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -320,8 +421,17 @@ public class MenuActivity extends Activity {
 	 */
 	public void showGraf11 (View v) {
 		Intent intent = new Intent(this,DataActivity.class);
-		intent.putExtra("url", DataHandler.doc11);
-		intent.putExtra("id", DataHandler.id);
+		
+		if(origen == 1) {
+			intent.putExtra("url", DataHandler.doc11);
+			intent.putExtra("id", DataHandler.id);
+		}
+		else if(origen == 2) {
+			intent.putExtra("url", DataHandlerFinder.doc11);
+			intent.putExtra("id", DataHandlerFinder.id);
+			
+		}
+		
 		intent.putExtra("rubro", 10);
 		startActivity(intent);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);

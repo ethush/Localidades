@@ -41,13 +41,13 @@ public class getDetallesMunicipio extends AsyncTask<String, String, String>{
 	@Override 
 	protected String doInBackground(String... url) {
 		// Servidor de producción.
-		//String _HOST = "http://www.gioax.com.mx";
+		String _HOST = "http://www.gioax.com.mx";
 		
 		//if uses android emulator also in hardware device
 		//String _HOST = "http://10.0.2.2/";
 		
 		//if uses Genymotion emulator
-		String _HOST = "http://10.0.3.2/";
+		//String _HOST = "http://10.0.3.2/";
 		
 		String _ROOT = "digepo_SIG";
 		String _SCRIPT = "data.php";

@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -60,6 +61,8 @@ public class MainActivity extends Activity{
     /* The p dialog. */
     ProgressDialog pDialog;
     
+    /* The bMunicipal button */
+    Button bMunicipal;
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -67,7 +70,9 @@ public class MainActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        /*  Setea el boton invisible, en caso de existir informacion se muestra. */
+        bMunicipal  = (Button) findViewById(R.id.showMenuMunicipio);
+        bMunicipal.setVisibility(Button.INVISIBLE);
         /*
          * Aquiere los recursos para localizacion y de red
          * */
@@ -220,6 +225,7 @@ public class MainActivity extends Activity{
 	 */
 	public void showMenuMunicipio(View v){
 		Intent intent = new Intent(this,MenuActivity.class);
+		intent.putExtra("origen", 1); //variable definida para MainActivity reconozca que clase de datos usar.
 		startActivity(intent);
 		//overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
@@ -329,7 +335,7 @@ public class MainActivity extends Activity{
 				if(latitude !=null && longitude !=null) {
 					LatLongAcq = true;
 					//Toast.makeText(getApplicationContext(), latitude +" --- "+ longitude, Toast.LENGTH_SHORT).show();
-					Log.e("Posicion", latitude +" --- "+ longitude);
+					//Log.e("Posicion", latitude +" --- "+ longitude);
 					DataHandler.latitude = latitude;
 					DataHandler.longitude = longitude;
 				
@@ -457,7 +463,7 @@ public class MainActivity extends Activity{
 			localidad = getLocalidades(array,"locality");
 			
 			/* Si las variables resultaran vacías se inicia una busqueda manual.*/
-			Log.d("Valores", localidad + " - " + vecindario);
+			//Log.d("Valores", localidad + " - " + vecindario);
 			if(vecindario.isEmpty() && localidad.isEmpty())	{
 				Toast.makeText(getApplicationContext(), "No se ha logrado adquirir información del municipio.", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(), FinderActivity.class);
@@ -472,8 +478,8 @@ public class MainActivity extends Activity{
 				 /* Agrega el nombre del municipio al titulo de la pantalla. */
 				this.setTitle(localidad);
 				nomLocalidad = (TextView) findViewById(R.id.localidad);
-				nomLocalidad.setText("Vecindario: "+ vecindario);
-				
+				nomLocalidad.setText("Colonia: "+ vecindario);
+				bMunicipal.setVisibility(Button.VISIBLE);
 				/* Obtenemos la información detallada del municipio. */
 				getDetalles();
 			 }

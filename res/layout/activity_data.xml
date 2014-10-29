@@ -18,13 +18,4 @@
         android:layout_weight=".50"
 	/>
     
-    <Button 
-        android:id="@+id/showPDF"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/showPDF"
-        android:visibility="visible"
-        android:onClick="showPDF"
-        />
-
 </LinearLayout>
