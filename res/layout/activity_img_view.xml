@@ -12,7 +12,7 @@
     tools:context=".ImgViewActivity" >
 
     
-        <com.digepo.localidades.TouchImageView
+        <com.digepo.sego.TouchImageView
 		android:id="@+id/remoteImg"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"

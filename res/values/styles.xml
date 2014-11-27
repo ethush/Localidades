@@ -49,7 +49,7 @@
         <item name="android:shadowColor">#000000</item>
         <item name="android:drawableTop">@drawable/next_menu_ico</item>        
     </style>
-     <style name="btnStyleArsenic2" parent="@android:style/Widget.Button">
+    <style name="btnStyleArsenic2" parent="@android:style/Widget.Button">
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#FFFFFF</item>
@@ -57,7 +57,17 @@
         <item name="android:shadowColor">#000000</item>
         <item name="android:drawableTop">@drawable/search_mun_actual_ico</item>        
     </style>
-
+	<style name="btnStyleArsenic3" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:drawableTop">@drawable/ico_info</item>        
+    </style>
+    
+    
+    
     <style name="btnStyleBreakerBay" parent="@android:style/Widget.Button">
        <item name="android:textSize">15sp</item>
        <item name="android:textStyle">bold</item>
@@ -162,6 +172,8 @@
        <item name="android:background">@drawable/sur_btn</item>
        <item name="android:drawableRight">@drawable/flecha_ico</item> 
     </style> 
+    
+    
     
     <style name="btn_valles" parent	="@style/mybutton_info">
        <item name="android:background">@drawable/valles_btn</item>

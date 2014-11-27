@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.digepo.localidades"
-    android:versionCode="19"
-    android:versionName="1.6.19" >
+    package="com.digepo.sego"
+    android:versionCode="22"
+    android:versionName="1.6.22" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -19,14 +19,14 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="com.digepo.localidades.permission.MAP_RECIVE" />
+    <uses-permission android:name="com.digepo.sego.permission.MAP_RECIVE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- <permission android:name="com.example.map.permission.MAPS_RECEIVE" android:protectionLevel="signature"/> -->
     <!-- <permission android:name="com.digepo.localidades.maps.permission.MAPS_RECEIVE" android:protectionLevel="signature"/> -->
     <!-- <uses-permission android:name="com.example.localidades.permission.MAPS_RECEIVE"/> -->
-    <uses-permission android:name="com.digepo.localidades.maps.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.digepo.sego.maps.permission.MAPS_RECEIVE" />
     <!-- Maps API needs OpenGL ES 2.0. -->
     <uses-feature
         android:glEsVersion="0x00020000"

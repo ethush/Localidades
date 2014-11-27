@@ -63,4 +63,5 @@
 	 <string name="title_activity_datos">Datos demográficos</string>
 	<string name="title_activity_data">Datos</string>
 	<string name="showPDF">View PDF Document</string>
+	<string name="infoText">Facilitadores de información: \n \n - INEGI. Censo de población y vivienda 2010. \n - INEGI. Marco Geoestadistico Municipal 2005. \n - CONAPO. Proyecciones de población. </string>
 </resources>

@@ -9,7 +9,7 @@
     android:paddingTop="2dp"
     android:screenOrientation="portrait"
     android:orientation="vertical"
-    tools:context="com.digepo.localidades.DataActivity" >
+    tools:context="com.digepo.sego.DataActivity" >
     
     <WebView  
         android:id="@+id/datos"

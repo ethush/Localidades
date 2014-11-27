@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/background_menu"
+    android:theme="@android:style/Theme.Dialog"
+    android:orientation="vertical" 
+    android:id="@+id/popup"
+    
+    >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/infoText"
+        android:textAppearance="?android:attr/textAppearanceLargePopupMenu" />
+
+</LinearLayout>

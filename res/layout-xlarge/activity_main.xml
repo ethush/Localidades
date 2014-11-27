@@ -22,31 +22,60 @@
 	    	class="com.google.android.gms.maps.MapFragment"
 	    	android:apiKey="AIzaSyDDCGYjxIHsFdOO8Z0k5rhPZ3r_--I2JOs" />
 	     <!-- Divisor de mapa y contenido -->
-	     <LinearLayout 
-		    android:orientation="horizontal"
+	    <LinearLayout
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:gravity="center"		    
-		    >
-
-			<Button
+		    android:layout_gravity="center"
+		    android:background="#a9a46f"
+		    android:gravity="center|right"
+		    android:orientation="horizontal" >
+		    
+			<LinearLayout 
+			    android:orientation="horizontal"
+			    android:layout_width="wrap_content"
+			    android:layout_height="match_parent"
+			    android:gravity="center"
+			    android:paddingRight="30dp"
+			    android:layout_gravity="center">
+			    
+			    <Button
 			    android:id="@+id/showMenu"
 			    style="@style/btnStyleArsenic1"
 			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
+			    android:layout_height="match_parent"
 			    android:text="@string/global"
 			    android:onClick="showMenu" />
 		      
-		      <Button
+		       <Button
 			    android:id="@+id/showMenuMunicipio"
 			    style="@style/btnStyleArsenic2"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="@string/municipio"
 			    android:onClick="showMenuMunicipio" />
-	      
-	     <!-- Contenido -->
+			    
+			</LinearLayout>
+
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="right"
+			    android:gravity="right"
+			    android:orientation="horizontal" >
+
+				<Button
+				    android:id="@+id/info"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/btnStyleArsenic3"
+				    android:layout_gravity="center|center_vertical"
+				    android:gravity="center_vertical"
+				    android:onClick="showInfo"
+				 />
+
+			</LinearLayout>
+
+		 <!-- Contenido -->
+
 		</LinearLayout>
-	     <!-- Contenido -->
-	    
 </LinearLayout>
