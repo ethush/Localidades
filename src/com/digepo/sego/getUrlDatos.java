@@ -14,14 +14,14 @@ public class getUrlDatos extends AsyncTask<String, String, String> {
 	/** Variable para recibir la respuesta del servidor. */
 	String data = null;
 	
-	/** Variable para formar la URL de petici髇. */
+	/** Variable para formar la URL de petici贸n. */
 	String req = null;
 	
 	int rubro;
 	protected String doInBackground(String... param) {
 		
-		// Servidor de producci髇.
-		String _HOST = "http://www.gioax.com.mx";
+		// Servidor de producci贸n.
+		String _HOST = "";
 				
 		//if uses android emulator also in hardware device
 		//String _HOST = "http://10.0.2.2/";
@@ -35,19 +35,19 @@ public class getUrlDatos extends AsyncTask<String, String, String> {
 		String _SCRIPT = null;
 			
 
-		/** MCrypt mcrypt_a: Clase para codificaci髇 de valores. @see MCrypt */
+		/** MCrypt mcrypt_a: Clase para codificaci贸n de valores. @see MCrypt */
 		//MCrypt mcrypt_a = new MCrypt();
 		
 		/*
 		 * Encripta los valores a pasar por la URL, ocasionalmente los municipios solicitados no
 		 * son devueltos con vecindarios, en caso de venir vacios se les asigna el valor "Dalvik"
-		 * tambien es posible que el municipio esta vac韔 y ocurre la misma asignaci髇, asi 
-		 * se previene una malformaci髇 de datos en la url o una petici髇 err髇ea.
+		 * tambien es posible que el municipio esta vac铆o y ocurre la misma asignaci贸n, asi 
+		 * se previene una malformaci贸n de datos en la url o una petici贸n err贸nea.
 		 *
-		 *  1. Poblacion --se incluye marginaci髇
+		 *  1. Poblacion --se incluye marginaci贸n
 		 *  2. Vivienda
 		 *  3. Educacion
-		 *  4. Economia -- Esto incluye el script economia_distribuci髇
+		 *  4. Economia -- Esto incluye el script economia_distribuci贸n
 		 *  5. Mortalidad
 		 *  6. Limitaciones
 		 *  7. Salud (derechoabiencia)
@@ -98,17 +98,17 @@ public class getUrlDatos extends AsyncTask<String, String, String> {
 	/**
 	 * Se obtiene JSON de los detalles del municipio.
 	 *
-	 * @param strUrl String. URL de petici髇 de datos
+	 * @param strUrl String. URL de petici贸n de datos
 	 * @return String. Cadena JSON en formato plano para convertir a JSONObject
-	 * @throws IOException Alerta de I/O por si ocurre un error durante el proceso de petici髇.
+	 * @throws IOException Alerta de I/O por si ocurre un error durante el proceso de petici贸n.
 	 * @exception Exception Puede ocurrir si el servidor no esta disponible o no responde, fallas en la conexion, 
-	 *            o no se tiene conexi髇 a internet.
+	 *            o no se tiene conexi贸n a internet.
 	 */
 	protected String getHTTPJSON(String strUrl) throws IOException{
     	/**String data: Variable para almacenar la respuesta JSON en formato plano */
     	String data = "";
     	
-    	/** HttpURLConnection urlconnection: Variable de tipo HttpURLConnection para hacer la petici髇 */
+    	/** HttpURLConnection urlconnection: Variable de tipo HttpURLConnection para hacer la petici贸n */
     	HttpURLConnection urlconnection = null;
     	
     	/** InputStream inputStream: Variable para almacenar la respuesta del servidor */
@@ -118,7 +118,7 @@ public class getUrlDatos extends AsyncTask<String, String, String> {
 		BufferedReader br = null;
 		
 		try {
-			/* Creamos la conexi髇 y se ejecuta la petici髇 */
+			/* Creamos la conexi贸n y se ejecuta la petici贸n */
 			URL url = new URL(strUrl);
 			urlconnection = (HttpURLConnection)url.openConnection();
 			urlconnection.connect();
